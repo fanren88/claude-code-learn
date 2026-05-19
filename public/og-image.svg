@@ -1,6 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#1a1a1a"/>
-  <rect x="80" y="200" width="80" height="80" rx="16" fill="#D97757"/>
-  <text x="200" y="260" font-family="system-ui,sans-serif" font-size="64" font-weight="700" fill="#fff">Claude Code Learn</text>
-  <text x="200" y="330" font-family="system-ui,sans-serif" font-size="32" fill="#aaa">Beginner guides � ff`�</text>
+  <defs>
+    <radialGradient id="glow" cx="20%" cy="0%" r="70%">
+      <stop offset="0%" stop-color="#79d08a" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#08090a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#08090a"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect x="80" y="200" width="72" height="72" rx="14" fill="#14151a" stroke="#79d08a" stroke-width="2"/>
+  <text x="180" y="248" font-family="Georgia, 'Noto Serif SC', serif" font-size="56" font-weight="600" fill="#f4f4f5">Claude Code </text>
+  <text x="580" y="248" font-family="Georgia, 'Noto Serif SC', serif" font-size="56" font-weight="600" fill="#79d08a">Learn</text>
+  <text x="180" y="310" font-family="system-ui, 'Noto Sans SC', sans-serif" font-size="28" fill="#a1a1aa">面向初学者的 Claude Code 中文学习站</text>
+  <text x="180" y="360" font-family="ui-monospace, monospace" font-size="18" fill="#71717a" letter-spacing="0.12em">OBSERVATORY TERMINAL</text>
 </svg>

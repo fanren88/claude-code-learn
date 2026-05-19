@@ -6,8 +6,8 @@ const copy = {
 	body: '面向初学者的中文学习站：从安装与登录，到理解 Agent 循环、权限与 MCP，再把 Claude Code 带进真实项目。不是完整参考手册，而是带你走通的学习路径。',
 	primary: '5 分钟入门',
 	primaryHref: '/start/quickstart/',
-	secondary: '查看学习路径',
-	secondaryHref: '#hub-learning-path',
+	secondary: '选择学习入口',
+	secondaryHref: '#home-paths',
 	terminalTitle: 'claude — zsh',
 	lines: [
 		{ kind: 'cmd', text: 'claude' },
@@ -21,10 +21,10 @@ const copy = {
 
 <section class="home-hero">
 	<div class="home-hero-bg" aria-hidden="true"></div>
-	<div class="home-hero-inner">
+	<div class="hub-shell home-hero-inner">
 		<div class="home-hero-copy">
 			<p class="home-kicker">{copy.kicker}</p>
-			<h1 id="_top" class="home-hero-title">
+			<h1 id="home-hero-heading" class="home-hero-title font-display">
 				{copy.title}<span class="home-hero-title-accent">{copy.titleAccent}</span>
 			</h1>
 			<p class="home-hero-lead">{copy.body}</p>
@@ -33,7 +33,7 @@ const copy = {
 				<a class="hub-btn hub-btn-secondary" href={copy.secondaryHref}>{copy.secondary}</a>
 			</div>
 		</div>
-		<div class="terminal-card" aria-label={copy.terminalTitle}>
+		<div class="terminal-card shadow-card" aria-label={copy.terminalTitle}>
 			<div class="terminal-bar">
 				<span></span>
 				<span></span>

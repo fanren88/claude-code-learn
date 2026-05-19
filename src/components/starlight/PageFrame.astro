@@ -1,0 +1,58 @@
+---
+import Default from '@astrojs/starlight/components/PageFrame.astro';
+---
+
+<Default>
+	<slot name="header" slot="header" />
+	<slot name="sidebar" slot="sidebar" />
+	<slot />
+</Default>
+<script is:inline>
+	document.documentElement.classList.add('site-bg-root');
+	document.body.classList.add('site-bg');
+</script>
+
+<style>
+	@layer starlight.overrides {
+		/* 顶栏内容限制在一行高度内，避免压住正文 */
+		:global(header.header:has(.learn-header-wrap)) {
+			height: var(--sl-nav-height);
+			min-height: var(--sl-nav-height);
+			max-height: var(--sl-nav-height);
+			overflow: visible;
+			display: flex;
+			align-items: center;
+			padding-block: 0;
+		}
+
+		:global(.learn-header-wrap) {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			height: var(--sl-nav-height);
+			min-width: 0;
+		}
+
+		:global(.learn-header-bar.header) {
+			flex: 1;
+			min-height: 0;
+			height: 100%;
+			max-height: var(--sl-nav-height);
+			overflow: hidden;
+		}
+
+		:global(.learn-top-nav-mobile:not([hidden])) {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			right: 0;
+			z-index: calc(var(--sl-z-index-navbar) + 1);
+			box-shadow: var(--learn-shadow-card);
+		}
+
+		:global(html.learn-nav-mobile-open .main-frame) {
+			padding-top: calc(var(--sl-nav-height) + 11rem);
+		}
+	}
+</style>

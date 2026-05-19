@@ -33,10 +33,13 @@ const continueSteps = JSON.stringify(steps.map((step) => ({ href: step.href, tit
 		<ol class="learning-path-cards motion-stagger-children">
 			{steps.map((step, index) => (
 				<li data-learning-step data-href={step.href}>
-					<a class="learning-path-card" href={step.href}>
-						<span class="learning-path-card-index">
-							{String(index + 1).padStart(2, '0')}
-						</span>
+					<a class="learning-path-card shadow-card" href={step.href}>
+						<div class="learning-path-card-meta">
+							<span class="learning-path-card-index">
+								第 {index + 1} 步
+							</span>
+							<span class="learning-path-card-pill">教程</span>
+						</div>
 						<strong>{step.title}</strong>
 						<p>{step.description}</p>
 					</a>
@@ -45,9 +48,10 @@ const continueSteps = JSON.stringify(steps.map((step) => ({ href: step.href, tit
 		</ol>
 	) : (
 		<ol class="learning-path">
-			{steps.map((step) => (
+			{steps.map((step, index) => (
 				<li data-learning-step data-href={step.href}>
 					<div>
+						<span class="learning-path-card-index">第 {index + 1} 步</span>
 						<a href={step.href}>{step.title}</a>
 						<p>{step.description}</p>
 					</div>

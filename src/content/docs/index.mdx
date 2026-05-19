@@ -9,112 +9,12 @@ hero:
 
 import HomeHero from '../../components/HomeHero.astro';
 import HomeFeatureStrip from '../../components/HomeFeatureStrip.astro';
-import HubSection from '../../components/HubSection.astro';
-import LearningPath from '../../components/LearningPath.astro';
-import ArticlePreview from '../../components/ArticlePreview.astro';
-import DocTiles from '../../components/DocTiles.astro';
+import HomePathCards from '../../components/HomePathCards.astro';
 
 <HomeHero />
 <HomeFeatureStrip />
+<HomePathCards />
 
-<HubSection title="快速开始" lead="按顺序完成安装、第一次对话与基础配置。">
-<DocTiles
-  stagger
-  items={[
-    {
-      label: '01',
-      title: '安装与环境',
-      href: '/start/install/',
-      description: '系统要求、Native 安装、Homebrew、WinGet 与安装验证。',
-    },
-    {
-      label: '02',
-      title: '第一次对话',
-      href: '/start/quickstart/',
-      description: '登录账号，运行 claude，完成首个提问与代码修改。',
-    },
-    {
-      label: '03',
-      title: '配置与权限',
-      href: '/configure/settings-overview/',
-      description: '理解 settings.json、权限策略和适合新手的安全配置。',
-    },
-  ]}
-/>
-</HubSection>
-
-<HubSection id="hub-learning-path" title="学习路径" lead="从安装到 CLAUDE.md，按步骤建立完整认知。">
-<LearningPath
-  variant="cards"
-  steps={[
-    {
-      title: '安装 Claude Code',
-      href: '/start/install/',
-      description: '选择适合你系统的安装方式并完成环境检查。',
-    },
-    {
-      title: '登录账号',
-      href: '/start/authentication/',
-      description: '使用 Claude Pro、Console 或企业云提供商登录。',
-    },
-    {
-      title: '完成第一个任务',
-      href: '/start/quickstart/',
-      description: '在终端里提问、让 Claude 改代码并学会审批变更。',
-    },
-    {
-      title: '理解工作原理',
-      href: '/concepts/how-it-works/',
-      description: '了解 Agent 循环、工具调用与权限弹窗。',
-    },
-    {
-      title: '编写 CLAUDE.md',
-      href: '/concepts/context/',
-      description: '为项目添加上下文，让 Claude 更懂你的代码库。',
-    },
-  ]}
-/>
-</HubSection>
-
-<HubSection title="核心能力" lead="工具权限、扩展、自动化与多界面 — 文档内页保持阅读型排版。">
-<DocTiles
-  stagger
-  items={[
-    {
-      label: '权限',
-      title: '工具与权限',
-      href: '/concepts/tools-and-permissions/',
-      description: 'Bash、读写文件、搜索代码，以及什么时候需要你确认。',
-    },
-    {
-      label: '扩展',
-      title: 'MCP',
-      href: '/concepts/mcp/',
-      description: '通过 MCP 连接数据库、API 与外部工具。',
-    },
-    {
-      label: '自动化',
-      title: 'Skills & Hooks',
-      href: '/concepts/skills-and-hooks/',
-      description: '复用技能包，把重复工作变成稳定流程。',
-    },
-    {
-      label: '界面',
-      title: '多界面使用',
-      href: '/start/interfaces/',
-      description: 'CLI、Desktop、VS Code、Web 与 CI/CD 的适用场景。',
-    },
-  ]}
-/>
-</HubSection>
-
-<HubSection title="精选文章" lead="社区整理的教程、案例与延伸阅读。">
-<ArticlePreview limit={3} />
-<p class="hub-section-foot">
-<a class="hub-link-arrow" href="/resources/">查看全部收藏 →</a>
-</p>
-</HubSection>
-
-<aside class="hub-disclaimer">
+<aside class="hub-disclaimer hub-shell">
 本站为社区学习站，非 Anthropic 官方文档。命令与配置以 <a href="https://code.claude.com/docs/en/quickstart">官方文档</a> 为准。
 </aside>

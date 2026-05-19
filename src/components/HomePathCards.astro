@@ -1,0 +1,43 @@
+---
+import { homePaths } from '../data/home-paths';
+
+const icons = {
+	learn: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path d="M8 7h6"/><path d="M8 11h8"/></svg>`,
+	path: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></svg>`,
+	resources: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8H4l4.9 3.6-1.9 5.8L12 14.6l5 3.6-1.9-5.8L20 8.8h-6.1z"/></svg>`,
+};
+---
+
+<section id="home-paths" class="home-paths-section hub-shell" aria-labelledby="home-paths-title">
+	<header class="home-paths-head">
+		<p class="hub-section-eyebrow">Learning Hub</p>
+		<h2 id="home-paths-title" class="font-display">选择你的学习入口</h2>
+		<p>按目标拆分：先跑通环境，再建立完整认知，最后按需查阅实践与延伸阅读。</p>
+	</header>
+
+	<div class="home-path-grid motion-stagger-children">
+		{
+			homePaths.map((path) => (
+				<a class="home-path-card shadow-card" href={path.href}>
+					<span class="home-path-card-icon" aria-hidden="true" set:html={icons[path.icon]} />
+					<h3>{path.title}</h3>
+					<p>{path.description}</p>
+					<span class="home-path-card-meta">
+						{path.count} · {path.duration}
+					</span>
+					<span class="home-path-card-cta">
+						开始学习 <span class="doc-tile-cta-arrow" aria-hidden="true">→</span>
+					</span>
+				</a>
+			))
+		}
+	</div>
+
+	<p class="home-paths-foot">
+		需要命令参考？请查阅
+		<a href="https://code.claude.com/docs/en/quickstart" target="_blank" rel="noopener noreferrer">
+			Claude Code 官方文档
+		</a>
+		。
+	</p>
+</section>

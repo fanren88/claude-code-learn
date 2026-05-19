@@ -12,7 +12,8 @@ export default defineConfig({
 				'面向初学者的 Claude Code 学习站 — 安装、配置、原理与精选文章。',
 			logo: {
 				src: './src/assets/logo.svg',
-				replacesTitle: false,
+				alt: 'Claude Code Learn',
+				replacesTitle: true,
 			},
 			locales: {
 				root: {
@@ -22,10 +23,17 @@ export default defineConfig({
 			},
 			customCss: ['./src/styles/custom.css', './src/styles/motion.css'],
 			components: {
+				PageFrame: './src/components/starlight/PageFrame.astro',
+				Header: './src/components/starlight/Header.astro',
+				SiteTitle: './src/components/starlight/SiteTitle.astro',
 				MarkdownContent: './src/components/starlight/MarkdownContent.astro',
-				ThemeSelect: './src/components/starlight/ThemeSelect.astro',
+				ThemeSelect: './src/components/starlight/ThemeSelect.astro', // 空组件，隐藏深浅色切换
 			},
 			sidebar: [
+				{
+					label: '学习',
+					items: [{ label: '学习路径', link: '/learn/' }],
+				},
 				{
 					label: '入门',
 					items: [
@@ -80,6 +88,28 @@ export default defineConfig({
 				},
 			],
 			head: [
+				{
+					tag: 'link',
+					attrs: {
+						rel: 'preconnect',
+						href: 'https://fonts.googleapis.com',
+					},
+				},
+				{
+					tag: 'link',
+					attrs: {
+						rel: 'preconnect',
+						href: 'https://fonts.gstatic.com',
+						crossorigin: true,
+					},
+				},
+				{
+					tag: 'link',
+					attrs: {
+						rel: 'stylesheet',
+						href: 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;600;700&display=swap',
+					},
+				},
 				{
 					tag: 'meta',
 					attrs: {

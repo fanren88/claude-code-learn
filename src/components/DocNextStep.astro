@@ -4,7 +4,7 @@ import { getTrailContext } from '../data/doc-trails';
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
 const ctx = getTrailContext(pathname.endsWith('/') ? pathname : `${pathname}/`);
 
-const copy = { next: '下一步', progress: '已完成', progressOf: '/', pages: '篇教程' };
+const copy = { next: '下一章', progress: '已完成', progressOf: '/', pages: '篇教程' };
 
 const show =
 	ctx &&
@@ -20,28 +20,23 @@ const progressTotal = ctx?.trailPaths?.length ?? 0;
 
 {
 	show && ctx?.next && (
-		<aside
-			class="doc-next-step"
-			aria-label={copy.next}
-			data-progress-count
-			data-progress-total={progressTotal}
-			data-progress-paths={progressPaths}
-		>
-			<div class="doc-next-step-copy">
-				<p class="doc-next-step-label">{copy.next}</p>
-				<a class="doc-next-step-title" href={nextHref}>
-					{ctx.next.label}
-				</a>
+		<nav class="doc-next-nav" aria-label={copy.next}>
+			<a
+				class="doc-next-step shadow-card"
+				href={nextHref}
+				data-progress-count
+				data-progress-total={progressTotal}
+				data-progress-paths={progressPaths}
+			>
+				<p class="doc-next-step-label">{copy.next} →</p>
+				<p class="doc-next-step-title">{ctx.next.label}</p>
 				<p class="doc-next-step-progress">
 					{copy.progress}{' '}
 					<span data-progress-filled>0</span>
 					{copy.progressOf}
 					{progressTotal} {copy.pages}
 				</p>
-			</div>
-			<a class="doc-next-step-arrow" href={nextHref} aria-hidden="true">
-				→
 			</a>
-		</aside>
+		</nav>
 	)
 }

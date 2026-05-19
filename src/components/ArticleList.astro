@@ -144,7 +144,7 @@ const articleById = new Map((articles as Article[]).map((article) => [article.id
 				<div class="article-grid">
 					{group.items.map((article) => (
 						<article
-							class="article-card"
+							class="article-card shadow-card"
 							data-article
 							data-tags={article.tags.join(',')}
 							data-search-text={`${article.title} ${article.titleEn ?? ''} ${article.summary} ${article.summaryEn ?? ''} ${article.author} ${article.level ?? ''} ${article.tags.join(' ')}`.toLowerCase()}

@@ -5,6 +5,7 @@ export interface TrailItem {
 }
 
 export const trail: TrailItem[] = [
+	{ slug: 'learn', label: '学习路径' },
 	{ slug: 'start/intro', label: '什么是 Claude Code' },
 	{ slug: 'start/quickstart', label: '5 分钟入门' },
 	{ slug: 'start/install', label: '安装' },

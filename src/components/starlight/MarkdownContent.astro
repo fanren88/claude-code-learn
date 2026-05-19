@@ -3,7 +3,9 @@ import Default from '@astrojs/starlight/components/MarkdownContent.astro';
 import DocNextStep from '../DocNextStep.astro';
 ---
 
-<Default><slot /></Default>
+<div class="prose-learn">
+	<Default><slot /></Default>
+</div>
 <DocNextStep />
 <script>
 	import { initProgressTracking } from '../../scripts/learn-progress.ts';
