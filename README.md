@@ -1,49 +1,66 @@
-# Starlight Starter Kit: Basics
+# Claude Code Learn
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+Beginner-friendly documentation for [Claude Code](https://code.claude.com/docs/en/quickstart) — install, configure, concepts, and curated articles. Available in **简体中文** and **English**.
 
-```
-npm create astro@latest -- --template starlight
-```
+> Community learning site. Not official Anthropic documentation.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Local development
 
-## 🚀 Project Structure
-
-Inside of your Astro + Starlight project, you'll see the following folders and files:
-
-```
-.
-├── public/
-├── src/
-│   ├── assets/
-│   ├── content/
-│   │   └── docs/
-│   └── content.config.ts
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
+```bash
+npm install
+npm run dev
 ```
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+Open [http://localhost:4321/zh-cn/](http://localhost:4321/zh-cn/) (default locale).
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
+## Build
 
-Static assets, like favicons, can be placed in the `public/` directory.
+```bash
+npm run build
+npm run preview
+```
 
-## 🧞 Commands
+## Deploy
 
-All commands are run from the root of the project, from a terminal:
+### Vercel (recommended)
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+1. Import this repository in [Vercel](https://vercel.com)
+2. Framework preset: **Astro**
+3. Build command: `npm run build`
+4. Output directory: `dist`
 
-## 👀 Want to learn more?
+### GitHub Pages
 
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+1. Enable **Pages** → Source: **GitHub Actions**
+2. Push to `main` — the included workflow builds and deploys `dist`
+
+For project sites, set `base` in `astro.config.mjs`:
+
+```js
+export default defineConfig({
+  site: 'https://<user>.github.io',
+  base: '/claude-code-doc',
+  // ...
+});
+```
+
+Update `public/llms.txt` with your real domain after deploy.
+
+## Add articles
+
+- Add curated external links in [`src/data/articles.json`](src/data/articles.json).
+- Add site-owned articles as `.mdx` files under `src/content/docs/zh-cn/articles/` and `src/content/docs/en/articles/`.
+- Add new article pages to `astro.config.mjs` if they should appear in the sidebar.
+
+## Project structure
+
+```
+src/content/docs/zh-cn/   # Chinese content
+src/content/docs/en/      # English content
+src/components/           # Hub UI components
+src/data/articles.json    # Curated external links
+```
+
+## License
+
+MIT
