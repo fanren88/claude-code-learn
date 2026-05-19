@@ -353,12 +353,15 @@ main:has(.home-hero) .sl-container {
 
 .sidebar-content a:hover {
 	color: var(--accent-brand);
-	background: var(--learn-accent-wash-strong);
+	background-color: color-mix(in srgb, var(--sl-color-accent), transparent 92%);
 }
 
-.sidebar-content a[aria-current='page'] {
+/* 覆盖 Starlight 默认的实心 accent 背景 */
+.sidebar-content a[aria-current='page'],
+.sidebar-content a[aria-current='page']:hover,
+.sidebar-content a[aria-current='page']:focus {
 	color: var(--accent-brand);
-	background: var(--learn-accent-wash-strong);
+	background-color: color-mix(in srgb, var(--sl-color-accent), transparent 90%);
 	font-weight: 600;
 }
 
