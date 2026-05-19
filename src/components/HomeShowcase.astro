@@ -1,0 +1,70 @@
+---
+interface Props {
+	locale?: 'zh-cn' | 'en';
+}
+
+const { locale = 'zh-cn' } = Astro.props;
+const isEn = locale === 'en';
+
+const copy = isEn
+	? {
+			kicker: 'Beginner path',
+			title: 'From install to real project changes',
+			body: 'A learning route built around the actual Claude Code workflow: describe a task, let the agent inspect the repo, review changes, and keep control of permissions.',
+			primary: 'Start the quickstart',
+			primaryHref: '/en/start/quickstart/',
+			secondary: 'Browse the concepts',
+			secondaryHref: '/en/concepts/how-it-works/',
+			commandTitle: 'First useful session',
+			promptLine: 'Add Windows notes to the install page',
+			steps: ['Open a project', 'Ask for a scoped change', 'Review the diff', 'Run tests'],
+		}
+	: {
+			kicker: '新手学习路线',
+			title: '从安装到真正改项目',
+			body: '围绕 Claude Code 的真实工作流组织内容：描述目标、让 Agent 阅读项目、审查改动、控制权限，再把结果合入你的开发流程。',
+			primary: '开始 5 分钟入门',
+			primaryHref: '/zh-cn/start/quickstart/',
+			secondary: '先看工作原理',
+			secondaryHref: '/zh-cn/concepts/how-it-works/',
+			commandTitle: '第一次有效会话',
+			promptLine: '帮我为安装页补充 Windows 注意事项',
+			steps: ['打开一个项目', '提出明确任务', '审查代码 diff', '运行测试验证'],
+		};
+---
+
+<section class="home-showcase" aria-labelledby="home-showcase-title">
+	<div class="home-showcase-copy">
+		<p class="home-kicker">{copy.kicker}</p>
+		<h2 id="home-showcase-title">{copy.title}</h2>
+		<p>{copy.body}</p>
+		<div class="home-actions">
+			<a class="home-action-primary" href={copy.primaryHref}>{copy.primary}</a>
+			<a class="home-action-secondary" href={copy.secondaryHref}>{copy.secondary}</a>
+		</div>
+	</div>
+	<div class="terminal-card" aria-label={copy.commandTitle}>
+		<div class="terminal-bar">
+			<span></span>
+			<span></span>
+			<span></span>
+			<strong>{copy.commandTitle}</strong>
+		</div>
+		<div class="terminal-body">
+			<p class="terminal-line"><span>$</span> claude</p>
+			<p class="terminal-line"><span>></span> /init</p>
+			<p
+				class="terminal-line"
+				data-terminal-typed="true"
+				data-full-text={`> ${copy.promptLine}`}
+			>
+				<span>></span> {copy.promptLine}
+			</p>
+			<ol>
+				{copy.steps.map((step) => (
+					<li class="terminal-line">{step}</li>
+				))}
+			</ol>
+		</div>
+	</div>
+</section>

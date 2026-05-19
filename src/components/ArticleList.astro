@@ -1,0 +1,313 @@
+---
+import articles from '../data/articles.json';
+
+interface Article {
+	id: string;
+	title: string;
+	titleEn?: string;
+	url: string;
+	author: string;
+	lang: string;
+	category?: string;
+	level?: string;
+	tags: string[];
+	summary: string;
+	summaryEn?: string;
+	date: string;
+	tip?: string;
+}
+
+interface Props {
+	locale?: 'zh-cn' | 'en';
+}
+
+const { locale = 'zh-cn' } = Astro.props;
+const isEn = locale === 'en';
+const allTags = [...new Set((articles as Article[]).flatMap((a) => a.tags))];
+const labels = isEn
+	? {
+			search: 'Search resources…',
+			all: 'All',
+			tip: 'Tip',
+			level: 'Level',
+			noResults: 'No matching resources.',
+			pathsTitle: 'Recommended Paths',
+			paths: [
+				{
+					title: 'Start here',
+					description: 'Install Claude Code, run the first task, then compare with the official quickstart.',
+					ids: ['official-quickstart'],
+				},
+				{
+					title: 'Configure safely',
+					description: 'Learn settings and permissions before loosening tool access.',
+					ids: ['official-configuration'],
+				},
+				{
+					title: 'Hands-on practice',
+					description: 'Use best practices and video walkthroughs to build muscle memory.',
+					ids: ['official-best-practices', 'youtube-claude-code-playlist'],
+				},
+			],
+			categories: {
+				official: {
+					title: 'Official Docs',
+					description: 'Primary sources for commands, configuration, and behavior.',
+				},
+				video: {
+					title: 'Video Tutorials',
+					description: 'External videos for seeing workflows in motion.',
+				},
+				practice: {
+					title: 'Practice & Best Practices',
+					description: 'Resources that help turn concepts into everyday workflows.',
+				},
+				advanced: {
+					title: 'Advanced Topics',
+					description: 'Extensions, protocols, and deeper mental models.',
+				},
+				other: {
+					title: 'Other Resources',
+					description: 'Useful links that do not fit the main groups yet.',
+				},
+			},
+		}
+	: {
+			search: '搜索资源…',
+			all: '全部',
+			tip: '读后提示',
+			level: '阶段',
+			noResults: '没有匹配的资源。',
+			pathsTitle: '推荐学习路径',
+			paths: [
+				{
+					title: '新手入门',
+					description: '先完成安装与第一次任务，再对照官方 Quickstart 校准命令。',
+					ids: ['official-quickstart'],
+				},
+				{
+					title: '安全配置',
+					description: '先理解 settings 与权限，再逐步放宽工具调用。',
+					ids: ['official-configuration'],
+				},
+				{
+					title: '实操进阶',
+					description: '用最佳实践和视频教程，把概念变成稳定工作流。',
+					ids: ['official-best-practices', 'youtube-claude-code-playlist'],
+				},
+			],
+			categories: {
+				official: {
+					title: '官方文档',
+					description: '命令、配置和行为变化的第一事实来源。',
+				},
+				video: {
+					title: '视频教程',
+					description: '适合用观看方式理解操作流程。',
+				},
+				practice: {
+					title: '实操与最佳实践',
+					description: '把概念转成日常工作流的材料。',
+				},
+				advanced: {
+					title: '进阶主题',
+					description: '扩展能力、协议和更深入的心智模型。',
+				},
+				other: {
+					title: '其他资源',
+					description: '暂时不归入主分类，但值得保留的链接。',
+				},
+			},
+		};
+
+const categoryOrder = ['official', 'video', 'practice', 'advanced', 'other'];
+const groupedArticles = categoryOrder
+	.map((category) => ({
+		category,
+		meta: labels.categories[category as keyof typeof labels.categories],
+		items: (articles as Article[]).filter((article) => (article.category ?? 'other') === category),
+	}))
+	.filter((group) => group.items.length > 0);
+
+const articleById = new Map((articles as Article[]).map((article) => [article.id, article]));
+---
+
+<section class="resource-paths" aria-labelledby="resource-paths-title">
+	<h2 id="resource-paths-title">{labels.pathsTitle}</h2>
+	<div class="resource-path-grid">
+		{
+			labels.paths.map((path) => (
+				<article class="resource-path">
+					<strong>{path.title}</strong>
+					<p>{path.description}</p>
+					<ul class="resource-path-checklist">
+						{path.ids.map((id) => {
+							const article = articleById.get(id);
+							if (!article) return null;
+							const title = isEn && article.titleEn ? article.titleEn : article.title;
+							return (
+								<li>
+									<label>
+										<input type="checkbox" data-resource-check={id} />
+										<span>
+											<a href={article.url} target="_blank" rel="noopener noreferrer">
+												{title}
+											</a>
+										</span>
+									</label>
+								</li>
+							);
+						})}
+					</ul>
+				</article>
+			))
+		}
+	</div>
+</section>
+
+<div class="resource-filters" data-article-filters>
+	<input
+		type="search"
+		placeholder={labels.search}
+		aria-label={labels.search}
+		data-search
+	/>
+	<button type="button" class="filter-btn active" data-tag="__all__">
+		{labels.all}
+	</button>
+	{
+		allTags.map((tag) => (
+			<button type="button" class="filter-btn" data-tag={tag}>
+				{tag}
+			</button>
+		))
+	}
+</div>
+
+<div class="resource-library" data-article-list>
+	{
+		groupedArticles.map((group) => (
+			<section class="resource-section" data-resource-section>
+				<header class="resource-section-header">
+					<div>
+						<h2>{group.meta.title}</h2>
+						<p>{group.meta.description}</p>
+					</div>
+					<span data-section-count>{group.items.length}</span>
+				</header>
+				<div class="article-grid">
+					{group.items.map((article) => (
+						<article
+							class="article-card"
+							data-article
+							data-tags={article.tags.join(',')}
+							data-search-text={`${article.title} ${article.titleEn ?? ''} ${article.summary} ${article.summaryEn ?? ''} ${article.author} ${article.level ?? ''} ${article.tags.join(' ')}`.toLowerCase()}
+						>
+							<div class="article-card-topline">
+								<span>{article.level ?? group.meta.title}</span>
+								<span>{article.lang}</span>
+							</div>
+							<h3>
+								<a href={article.url} target="_blank" rel="noopener noreferrer">
+									{isEn && article.titleEn ? article.titleEn : article.title}
+								</a>
+							</h3>
+							<p class="article-meta">
+								{article.author} · {article.date}
+							</p>
+							<p>{isEn && article.summaryEn ? article.summaryEn : article.summary}</p>
+							{article.tip && (
+								<p>
+									<strong>{labels.tip}:</strong> {article.tip}
+								</p>
+							)}
+							<div class="article-tags">
+								{article.tags.map((tag) => (
+									<span class="article-tag">{tag}</span>
+								))}
+							</div>
+						</article>
+					))}
+				</div>
+			</section>
+		))
+	}
+	<p class="resource-empty" data-empty hidden>{labels.noResults}</p>
+</div>
+
+<script>
+	import { initProgressTracking, refreshProgressUI } from '../scripts/learn-progress';
+
+	const searchInput = document.querySelector('[data-search]');
+	const filterBtns = document.querySelectorAll('[data-tag]');
+	const cards = document.querySelectorAll('[data-article]');
+	const sections = document.querySelectorAll('[data-resource-section]');
+	const empty = document.querySelector('[data-empty]');
+	let activeTag = '__all__';
+
+	function pulseSectionCounts() {
+		sections.forEach((section) => {
+			if (!(section instanceof HTMLElement) || section.hidden) return;
+			const badge = section.querySelector('[data-section-count]');
+			if (!(badge instanceof HTMLElement)) return;
+			badge.classList.remove('is-pulsing');
+			void badge.offsetWidth;
+			badge.classList.add('is-pulsing');
+		});
+	}
+
+	function applyFilters() {
+		const q = (searchInput?.value ?? '').toLowerCase().trim();
+		let visibleTotal = 0;
+		cards.forEach((card) => {
+			if (!(card instanceof HTMLElement)) return;
+			const tags = card.dataset.tags ?? '';
+			const text = card.dataset.searchText ?? '';
+			const tagMatch = activeTag === '__all__' || tags.split(',').includes(activeTag);
+			const searchMatch = !q || text.includes(q);
+			const visible = tagMatch && searchMatch;
+			card.hidden = !visible;
+			if (visible) visibleTotal += 1;
+		});
+		sections.forEach((section) => {
+			if (!(section instanceof HTMLElement)) return;
+			const visibleCards = section.querySelectorAll('[data-article]:not([hidden])');
+			const count = visibleCards.length;
+			section.hidden = count === 0;
+			const badge = section.querySelector('[data-section-count]');
+			if (badge) badge.textContent = String(count);
+		});
+		if (empty instanceof HTMLElement) {
+			empty.hidden = visibleTotal !== 0;
+		}
+		pulseSectionCounts();
+	}
+
+	searchInput?.addEventListener('input', applyFilters);
+	filterBtns.forEach((btn) => {
+		btn.addEventListener('click', () => {
+			activeTag = btn.getAttribute('data-tag') ?? '__all__';
+			filterBtns.forEach((b) => b.classList.toggle('active', b === btn));
+			applyFilters();
+		});
+	});
+
+	document.addEventListener('keydown', (event) => {
+		if (event.key !== '/' || event.metaKey || event.ctrlKey || event.altKey) return;
+		const target = event.target;
+		if (
+			target instanceof HTMLInputElement ||
+			target instanceof HTMLTextAreaElement ||
+			target instanceof HTMLSelectElement ||
+			(target instanceof HTMLElement && target.isContentEditable)
+		) {
+			return;
+		}
+		if (!(searchInput instanceof HTMLInputElement)) return;
+		event.preventDefault();
+		searchInput.focus();
+	});
+
+	initProgressTracking();
+	refreshProgressUI();
+</script>

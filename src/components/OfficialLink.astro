@@ -1,0 +1,17 @@
+---
+interface Props {
+	href: string;
+	label?: string;
+	verified?: string;
+}
+
+const { href, label = '在官方文档中查看', verified = '2026-05' } = Astro.props;
+---
+
+<aside class="official-link">
+	<span aria-hidden="true">Docs</span>
+	<span>
+		<a href={href} target="_blank" rel="noopener noreferrer">{label}</a>
+		— Last verified: {verified}
+	</span>
+</aside>

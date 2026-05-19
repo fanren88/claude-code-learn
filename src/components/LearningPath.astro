@@ -1,0 +1,43 @@
+---
+interface Step {
+	title: string;
+	href: string;
+	description: string;
+}
+
+interface Props {
+	steps: Step[];
+	locale?: 'zh-cn' | 'en';
+}
+
+const { steps, locale = 'zh-cn' } = Astro.props;
+const resourcesHref = locale === 'en' ? '/en/resources/' : '/zh-cn/resources/';
+const continueSteps = JSON.stringify(steps.map((step) => ({ href: step.href, title: step.title })));
+---
+
+<div
+	class="learning-continue"
+	data-continue-learning
+	data-continue-steps={continueSteps}
+	data-continue-locale={locale}
+	data-continue-resources={resourcesHref}
+	hidden
+>
+	<p class="learning-continue-text">
+		<span data-continue-label></span>
+	</p>
+	<a class="learning-continue-link" data-continue-link href="#"></a>
+</div>
+
+<ol class="learning-path">
+	{
+		steps.map((step) => (
+			<li data-learning-step data-href={step.href}>
+				<div>
+					<a href={step.href}>{step.title}</a>
+					<p>{step.description}</p>
+				</div>
+			</li>
+		))
+	}
+</ol>

@@ -1,0 +1,50 @@
+---
+import { getTrailContext } from '../data/doc-trails';
+
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+const ctx = getTrailContext(pathname.endsWith('/') ? pathname : `${pathname}/`);
+
+const isEn = ctx?.locale === 'en';
+const copy = isEn
+	? { next: 'Next up', progress: 'Completed', progressOf: 'of', pages: 'pages in the trail' }
+	: { next: '下一步', progress: '已完成', progressOf: '/', pages: '篇教程' };
+
+const show =
+	ctx &&
+	!ctx.isHub &&
+	ctx.next &&
+	ctx.slug !== 'resources' &&
+	ctx.slug !== 'help/about';
+
+const nextHref = ctx?.next ? `/${ctx.locale}/${ctx.next.slug}/` : '';
+const progressPaths = ctx?.trailPaths ? JSON.stringify(ctx.trailPaths) : '[]';
+const progressTotal = ctx?.trailPaths?.length ?? 0;
+---
+
+{
+	show && ctx?.next && (
+		<aside
+			class="doc-next-step"
+			aria-label={copy.next}
+			data-progress-count
+			data-progress-total={progressTotal}
+			data-progress-paths={progressPaths}
+		>
+			<div class="doc-next-step-copy">
+				<p class="doc-next-step-label">{copy.next}</p>
+				<a class="doc-next-step-title" href={nextHref}>
+					{ctx.next.label}
+				</a>
+				<p class="doc-next-step-progress">
+					{copy.progress}{' '}
+					<span data-progress-filled>0</span>
+					{copy.progressOf}
+					{progressTotal} {copy.pages}
+				</p>
+			</div>
+			<a class="doc-next-step-arrow" href={nextHref} aria-hidden="true">
+				→
+			</a>
+		</aside>
+	)
+}

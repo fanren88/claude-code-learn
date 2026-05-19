@@ -1,0 +1,238 @@
+---
+title: 在 Obsidian 里使用 Claude Code
+description: 通过 Claudian 插件把 Claude Code 接进 Obsidian，完成笔记整理、写作和项目管理
+---
+
+Obsidian 适合长期积累知识，Claude Code 适合阅读上下文、生成内容、整理任务和执行代码相关工作。把两者接起来以后，你可以在自己的本地笔记库里直接让 Claude Code 帮你整理资料、生成学习笔记、维护项目日志，甚至把某个主题拆成可执行的任务清单。
+
+这篇文章参考了菜鸟教程的 [Obsidian + Claude Code](https://www.runoob.com/markdown/obsidian-claude-code.html) 实操思路，并结合 Claude Code 官方安装方式重新整理。原文更像安装记录；本文会按“为什么这样做、怎么验证、哪里容易出错”的方式讲清楚。
+
+## 适合谁？
+
+这个工作流适合：
+
+- 已经用 Obsidian 管理学习笔记、项目笔记或知识库的人。
+- 想在笔记软件里直接调用 Claude Code，而不是来回切终端的人。
+- 希望让 AI 帮你整理技术资料、会议记录、项目进度、文献笔记的人。
+
+暂时不适合：
+
+- 完全不熟悉终端，也不想安装第三方插件的人。
+- 对 Obsidian 社区插件安全性没有判断能力的人。
+- 需要严格企业合规、不能随便安装外部插件的团队环境。
+
+## 整体流程
+
+```mermaid
+flowchart LR
+  Obsidian[安装 Obsidian] --> Claude[安装并登录 Claude Code]
+  Claude --> Plugin[安装 Claudian 插件]
+  Plugin --> Enable[在 Obsidian 启用插件]
+  Enable --> Use[在笔记里打开聊天并执行任务]
+```
+
+你真正要做的是三件事：
+
+1. 准备 Obsidian 笔记库。
+2. 确认本机 `claude` 命令能运行。
+3. 把 Claudian 插件文件放进 Obsidian 的插件目录并启用。
+
+## 第 1 步：安装 Obsidian
+
+先到 [Obsidian 官网下载页](https://obsidian.md/download) 安装对应系统版本。安装完成后，创建或打开一个 Vault。Vault 本质上就是一个本地文件夹，里面的笔记是 Markdown 文件。
+
+建议新手先新建一个测试 Vault，例如：
+
+```text
+Claude Code Lab
+```
+
+先在测试 Vault 里验证插件和 Claude Code 都能正常工作，再放到自己的主力知识库里使用。这样即使插件配置出错，也不会影响已有笔记。
+
+## 第 2 步：安装 Claude Code
+
+如果你还没安装 Claude Code，优先使用官方推荐的 Native 安装方式。
+
+macOS / Linux / WSL：
+
+```bash
+curl -fsSL https://claude.ai/install.sh | bash
+```
+
+Windows PowerShell：
+
+```powershell
+irm https://claude.ai/install.ps1 | iex
+```
+
+安装后在终端运行：
+
+```bash
+claude --version
+```
+
+然后运行：
+
+```bash
+claude
+```
+
+首次运行会引导你登录和授权。只有终端里的 `claude` 命令已经能正常启动，Obsidian 插件里调用 Claude Code 才有基础。
+
+:::tip
+网上一些旧教程会使用 `npm install -g @anthropic-ai/claude-code`。现在建议优先参考 [Claude Code 官方 Setup](https://code.claude.com/docs/en/setup)，因为安装方式、更新机制和平台支持会变化。
+:::
+
+## 第 3 步：下载 Claudian 插件文件
+
+Claudian 是一个 Obsidian 社区插件，用来在 Obsidian 中打开 Claude Code 聊天界面。它不是 Anthropic 官方插件，安装前建议先查看它的 GitHub 仓库、Release、Star、Issue 和最近更新时间。
+
+到 [Claudian 最新 Release](https://github.com/YishenTu/claudian/releases/latest) 下载这几个文件：
+
+```text
+main.js
+manifest.json
+styles.css
+```
+
+如果 Release 页面里的 assets 加载失败，可以稍后刷新，或进入仓库的 release 列表查找对应版本。不要从不明网盘或陌生压缩包下载插件文件。
+
+## 第 4 步：放到 Obsidian 插件目录
+
+打开你的 Vault 文件夹，在里面找到或创建这个目录：
+
+```text
+.obsidian/plugins/claudian/
+```
+
+最终结构应该像这样：
+
+```text
+你的 Vault/
+└── .obsidian/
+    └── plugins/
+        └── claudian/
+            ├── main.js
+            ├── manifest.json
+            └── styles.css
+```
+
+注意几点：
+
+- `.obsidian` 是隐藏目录，macOS Finder 里可以用 `Cmd + Shift + .` 显示隐藏文件。
+- 文件夹名建议使用 `claudian`，不要多套一层 `claudian-main` 或 `dist`。
+- 三个文件要直接放在 `claudian` 目录下，不要放进子目录。
+
+## 第 5 步：在 Obsidian 启用插件
+
+打开 Obsidian：
+
+1. 进入 Settings。
+2. 找到 Community plugins。
+3. 如果安全模式阻止社区插件，按你的风险判断关闭限制。
+4. 在 Installed plugins 里找到 Claudian。
+5. 打开插件开关。
+
+启用后，通常可以通过两种方式打开：
+
+- 点击左侧栏的 Claudian 图标。
+- 使用命令面板 `Cmd/Ctrl + P`，搜索 `Claudian: Open Chat`。
+
+如果没有看到插件，先检查文件路径和 `manifest.json` 是否直接在 `.obsidian/plugins/claudian/` 下。
+
+## 第一次使用
+
+第一次打开 Claudian 时，先做一个低风险测试，不要一上来让它改动大量笔记。
+
+你可以在测试 Vault 里新建一篇笔记，然后输入：
+
+```text
+请阅读当前笔记内容，帮我整理成更清晰的标题、要点和待办清单。
+不要创建新文件，先只给出建议。
+```
+
+确认插件能正常响应后，再试试更实际的任务：
+
+```text
+请基于这个 Vault 里的项目笔记，帮我生成一份本周项目进度总结。
+输出结构包括：已完成、进行中、阻塞问题、下周计划。
+如果你不确定某项信息来自哪里，请标注“不确定”。
+```
+
+这种提示比“帮我整理笔记”更稳定，因为它明确了输入范围、输出结构和不确定信息的处理方式。
+
+## 适合 Obsidian 的任务
+
+| 场景 | 可以怎么问 |
+|------|------------|
+| 整理学习笔记 | “把这篇笔记整理成概念、例子、常见误区三部分。” |
+| 生成项目周报 | “根据本周项目日志生成周报，保留风险和待办。” |
+| 拆解研究主题 | “把这个主题拆成 5 个可研究问题，并给每个问题列资料需求。” |
+| 清理会议记录 | “从会议记录中提取决策、负责人、截止时间。” |
+| 写技术文章草稿 | “基于这些笔记生成文章大纲，不要编造资料来源。” |
+
+不建议一开始就让它做这些事：
+
+- 批量改写整个 Vault。
+- 删除或移动大量笔记。
+- 自动发布文章。
+- 把私人笔记内容发送到不清楚的第三方服务。
+
+## 安全与隐私提醒
+
+Obsidian 的优势是本地优先，但插件和 AI 工具会改变数据流。使用前建议你明确三件事：
+
+1. **插件来源**：Claudian 是社区插件，不是 Obsidian 或 Anthropic 官方产品。
+2. **笔记范围**：不要让插件读取你不想交给 AI 处理的私人笔记、密钥、合同或敏感资料。
+3. **操作权限**：涉及创建、修改、删除笔记时，先让它“给建议”，再决定是否执行。
+
+如果你的 Vault 里有 `.env`、账号密码、客户资料、医疗/法律/财务信息，建议先建立一个独立的工作 Vault，而不是直接在主 Vault 上实验。
+
+## 常见问题
+
+**Obsidian 里看不到 Claudian**
+
+检查路径是否正确：
+
+```text
+.obsidian/plugins/claudian/manifest.json
+```
+
+如果文件在 `.obsidian/plugins/claudian/claudian/manifest.json`，说明多套了一层目录。
+
+**插件打开后无法调用 Claude Code**
+
+先回到终端运行：
+
+```bash
+claude
+```
+
+如果终端里都不能正常登录或启动，先修 Claude Code 安装和账号问题。
+
+**Windows 上找不到命令**
+
+确认 Claude Code 已安装，重新打开 Obsidian 和终端。Windows 环境还要注意 PowerShell、CMD、Git Bash、WSL 之间的 PATH 可能不一致。
+
+**担心插件影响主力 Vault**
+
+先新建一个测试 Vault。等确认插件行为、权限和输出方式都符合预期，再迁移到主力 Vault。
+
+## 推荐工作流
+
+真正好用的方式不是把 Obsidian 当成“AI 聊天窗口”，而是把它当成长期知识库：
+
+1. 每天把资料、会议、想法先沉淀成原始笔记。
+2. 用 Claudian 帮你整理结构、提取行动项、补充问题。
+3. 重要输出保留来源链接和不确定标记。
+4. 每周让 Claude Code 基于项目笔记生成复盘。
+5. 把稳定模板沉淀成 Obsidian 模板或 Claude Code Skill。
+
+这样 Claude Code 不是替你“记忆一切”，而是帮你把已有笔记变成更可检索、更可执行的知识系统。
+
+## 参考链接
+
+- [菜鸟教程：Obsidian + Claude Code](https://www.runoob.com/markdown/obsidian-claude-code.html)
+- [Obsidian 下载](https://obsidian.md/download)
+- [Claudian 最新 Release](https://github.com/YishenTu/claudian/releases/latest)
+- [Claude Code 官方 Setup](https://code.claude.com/docs/en/setup)

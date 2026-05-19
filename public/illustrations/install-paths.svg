@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">Claude Code installation paths</title>
+  <desc id="desc">Three install paths for macOS and Linux, Windows, and package managers.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#172018"/>
+      <stop offset="1" stop-color="#12151B"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2 2l8 4-8 4z" fill="#79D08A"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="620" rx="28" fill="url(#bg)"/>
+  <text x="64" y="76" fill="#F5F4EF" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="750">Choose your install path</text>
+  <text x="64" y="112" fill="#BAB8AF" font-family="Inter, Arial, sans-serif" font-size="18">Pick one route, verify with claude --version, then sign in.</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="70" y="170" width="320" height="286" rx="22" fill="#202922" stroke="#3A4C3D"/>
+    <circle cx="116" cy="218" r="20" fill="#79D08A"/>
+    <text x="111" y="225" fill="#172018" font-size="20" font-weight="800">$</text>
+    <text x="150" y="225" fill="#F5F4EF" font-size="24" font-weight="800">macOS / Linux</text>
+    <rect x="104" y="270" width="252" height="56" rx="10" fill="#111813" stroke="#344238"/>
+    <text x="126" y="305" fill="#F2C86B" font-size="17">curl install.sh | bash</text>
+    <path d="M230 338v42" stroke="#79D08A" stroke-width="4" marker-end="url(#arrow)"/>
+    <rect x="104" y="392" width="252" height="34" rx="8" fill="#15201A"/>
+    <text x="132" y="415" fill="#BAB8AF" font-size="16">restart terminal if needed</text>
+
+    <rect x="440" y="170" width="320" height="286" rx="22" fill="#202922" stroke="#3A4C3D"/>
+    <circle cx="486" cy="218" r="20" fill="#73A7FF"/>
+    <text x="478" y="225" fill="#172018" font-size="19" font-weight="800">PS</text>
+    <text x="520" y="225" fill="#F5F4EF" font-size="24" font-weight="800">Windows</text>
+    <rect x="474" y="270" width="252" height="56" rx="10" fill="#111813" stroke="#344238"/>
+    <text x="492" y="305" fill="#F2C86B" font-size="17">install.ps1 or install.cmd</text>
+    <path d="M600 338v42" stroke="#79D08A" stroke-width="4" marker-end="url(#arrow)"/>
+    <rect x="474" y="392" width="252" height="34" rx="8" fill="#15201A"/>
+    <text x="500" y="415" fill="#BAB8AF" font-size="16">Git for Windows helps Bash</text>
+
+    <rect x="810" y="170" width="320" height="286" rx="22" fill="#202922" stroke="#3A4C3D"/>
+    <circle cx="856" cy="218" r="20" fill="#E58F67"/>
+    <text x="847" y="225" fill="#172018" font-size="19" font-weight="800">PKG</text>
+    <text x="890" y="225" fill="#F5F4EF" font-size="24" font-weight="800">Package manager</text>
+    <rect x="844" y="270" width="252" height="56" rx="10" fill="#111813" stroke="#344238"/>
+    <text x="864" y="305" fill="#F2C86B" font-size="17">brew / winget / apt</text>
+    <path d="M970 338v42" stroke="#79D08A" stroke-width="4" marker-end="url(#arrow)"/>
+    <rect x="844" y="392" width="252" height="34" rx="8" fill="#15201A"/>
+    <text x="874" y="415" fill="#BAB8AF" font-size="16">manual upgrades may apply</text>
+  </g>
+
+  <rect x="270" y="508" width="660" height="58" rx="16" fill="#121A16" stroke="#79D08A"/>
+  <text x="382" y="544" fill="#F5F4EF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">Verify: claude --version</text>
+</svg>

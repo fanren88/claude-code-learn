@@ -1,7 +1,8 @@
 {
   "name": "claude-code-doc",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.1.0",
+  "description": "Beginner-friendly Claude Code documentation site (zh-cn + en)",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

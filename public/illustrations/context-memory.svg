@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" role="img" aria-labelledby="title desc">
+  <title id="title">Claude Code context sources</title>
+  <desc id="desc">A diagram showing project files, CLAUDE.md, user memory, @ references, and session history feeding Claude Code context.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#18251b"/>
+      <stop offset="1" stop-color="#102039"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="520" rx="28" fill="url(#bg)"/>
+  <g stroke="#79d08a" stroke-opacity=".13">
+    <path d="M90 120h780M90 260h780M90 400h780"/>
+    <path d="M180 70v380M480 70v380M780 70v380"/>
+  </g>
+  <g font-family="ui-sans-serif, system-ui, sans-serif">
+    <rect x="348" y="178" width="264" height="164" rx="22" fill="#f5f4ef"/>
+    <text x="480" y="238" text-anchor="middle" fill="#172018" font-size="28" font-weight="850">当前上下文</text>
+    <text x="480" y="270" text-anchor="middle" fill="#58645b" font-size="16">Claude Code 用来理解任务的材料</text>
+    <text x="480" y="302" text-anchor="middle" fill="#187a36" font-size="15" font-weight="750">越清晰，越稳定</text>
+    <g fill="none" stroke="#c4f1cd" stroke-width="3" stroke-linecap="round" stroke-opacity=".8">
+      <path d="M348 224H250"/>
+      <path d="M348 280H250"/>
+      <path d="M612 224h98"/>
+      <path d="M612 280h98"/>
+      <path d="M480 178V94"/>
+      <path d="M480 342v84"/>
+    </g>
+    <g>
+      <rect x="88" y="178" width="190" height="72" rx="14" fill="#233a29" stroke="#79d08a" stroke-opacity=".45"/>
+      <text x="183" y="208" text-anchor="middle" fill="#c4f1cd" font-size="18" font-weight="800">项目文件</text>
+      <text x="183" y="232" text-anchor="middle" fill="#bab8af" font-size="14">代码、测试、文档</text>
+    </g>
+    <g>
+      <rect x="88" y="270" width="190" height="72" rx="14" fill="#233a29" stroke="#79d08a" stroke-opacity=".45"/>
+      <text x="183" y="300" text-anchor="middle" fill="#c4f1cd" font-size="18" font-weight="800">CLAUDE.md</text>
+      <text x="183" y="324" text-anchor="middle" fill="#bab8af" font-size="14">团队规则与项目地图</text>
+    </g>
+    <g>
+      <rect x="682" y="178" width="190" height="72" rx="14" fill="#233a29" stroke="#79d08a" stroke-opacity=".45"/>
+      <text x="777" y="208" text-anchor="middle" fill="#c4f1cd" font-size="18" font-weight="800">@ 引用</text>
+      <text x="777" y="232" text-anchor="middle" fill="#bab8af" font-size="14">指定关键文件</text>
+    </g>
+    <g>
+      <rect x="682" y="270" width="190" height="72" rx="14" fill="#233a29" stroke="#79d08a" stroke-opacity=".45"/>
+      <text x="777" y="300" text-anchor="middle" fill="#c4f1cd" font-size="18" font-weight="800">会话历史</text>
+      <text x="777" y="324" text-anchor="middle" fill="#bab8af" font-size="14">本轮讨论与工具结果</text>
+    </g>
+    <g>
+      <rect x="365" y="46" width="230" height="76" rx="14" fill="#f2c86b"/>
+      <text x="480" y="78" text-anchor="middle" fill="#172018" font-size="18" font-weight="850">用户级记忆</text>
+      <text x="480" y="102" text-anchor="middle" fill="#3b3b25" font-size="14">个人偏好与长期习惯</text>
+    </g>
+    <g>
+      <rect x="365" y="398" width="230" height="76" rx="14" fill="#e58f67"/>
+      <text x="480" y="430" text-anchor="middle" fill="#172018" font-size="18" font-weight="850">清理与收敛</text>
+      <text x="480" y="454" text-anchor="middle" fill="#3d2119" font-size="14">/clear、总结、拆分任务</text>
+    </g>
+  </g>
+</svg>

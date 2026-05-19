@@ -1,0 +1,39 @@
+---
+title: 精选文章
+description: 社区与官方优质 Claude Code 阅读清单
+---
+
+这里分成两类内容：本站自己维护的文章，以及外部优质链接。外链只做摘要，不转载全文。
+
+## 站内文章
+
+- [第一次使用 Claude Code 应该怎么问](/zh-cn/articles/first-use/)
+- [查看全部站内文章](/zh-cn/articles/)
+
+## 外链精选
+
+外链会按资源类型分组。你可以先看顶部推荐路径，也可以用搜索和标签快速过滤。
+
+import ArticleList from '../../../components/ArticleList.astro';
+
+<ArticleList locale="zh-cn" />
+
+## 如何贡献链接
+
+编辑仓库中的 `src/data/articles.json`，按现有字段追加条目后提交 PR。
+
+```json
+{
+  "id": "unique-id",
+  "title": "文章标题",
+  "url": "https://...",
+  "author": "作者",
+  "lang": "zh",
+  "category": "practice",
+  "level": "实践",
+  "tags": ["入门"],
+  "summary": "为什么值得读",
+  "date": "2026-05-19",
+  "tip": "可选读后提示"
+}
+```

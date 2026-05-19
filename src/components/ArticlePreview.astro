@@ -1,0 +1,49 @@
+---
+import articles from '../data/articles.json';
+
+interface Article {
+	id: string;
+	title: string;
+	titleEn?: string;
+	url: string;
+	author: string;
+	lang: string;
+	tags: string[];
+	summary: string;
+	summaryEn?: string;
+	date: string;
+	tip?: string;
+}
+
+interface Props {
+	locale?: 'zh-cn' | 'en';
+	limit?: number;
+}
+
+const { locale = 'zh-cn', limit = 3 } = Astro.props;
+const isEn = locale === 'en';
+const items = (articles as Article[]).slice(0, limit);
+---
+
+<div class="article-grid">
+	{
+		items.map((article) => (
+			<article class="article-card">
+				<h3>
+					<a href={article.url} target="_blank" rel="noopener noreferrer">
+						{isEn && article.titleEn ? article.titleEn : article.title}
+					</a>
+				</h3>
+				<p class="article-meta">
+					{article.author} · {article.date}
+				</p>
+				<p>{isEn && article.summaryEn ? article.summaryEn : article.summary}</p>
+				<div class="article-tags">
+					{article.tags.map((tag) => (
+						<span class="article-tag">{tag}</span>
+					))}
+				</div>
+			</article>
+		))
+	}
+</div>

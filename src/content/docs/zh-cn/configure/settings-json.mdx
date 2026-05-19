@@ -1,0 +1,64 @@
+---
+title: settings.json
+description: 常用 settings.json 字段与示例
+---
+
+## 文件位置
+
+| 文件 | 路径 |
+|------|------|
+| 用户级 | `~/.claude/settings.json` |
+| 项目级 | `<repo>/.claude/settings.json` |
+| 本地覆盖 | `<repo>/.claude/settings.local.json` |
+
+## 常用字段（示例）
+
+```json
+{
+  "model": "sonnet",
+  "permissions": {
+    "allow": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Bash(npm test:*)",
+      "Bash(pnpm lint:*)"
+    ],
+    "deny": [
+      "Bash(rm:*)",
+      "Bash(git push --force:*)"
+    ]
+  }
+}
+```
+
+:::caution
+键名与可用模型 ID 随版本变化，修改前请对照[官方 Settings](https://code.claude.com/docs/en/settings)。
+:::
+
+## 怎么读这个例子？
+
+- `model` 控制默认模型。官方文档会随版本更新可用模型与别名。
+- `permissions.allow` 里可以放工具名，也可以放更细的模式，例如只允许某类 Bash 命令。
+- `permissions.deny` 用来明确阻止高风险操作。deny 的语义应尽量具体，避免误伤正常开发。
+
+权限规则不是越宽松越高级。好的配置应该减少重复确认，同时保留关键操作的人工判断。
+
+## 与 CLAUDE.md 的关系
+
+- **settings.json**：机器可读的配置（权限、模型等）
+- **CLAUDE.md**：给模型的自然语言项目说明
+
+两者互补，不要混在同一文件里堆长文。
+
+## 修改前检查清单
+
+1. 这个设置应该给所有团队成员共享，还是只属于我？
+2. 是否包含本机路径、Token、账号信息等不该提交的内容？
+3. 是否把 Bash 放得太宽？
+4. 是否有对应的 `deny` 规则兜住危险命令？
+5. 改完后能否用 `/config` 或一次低风险任务验证效果？
+
+import OfficialLink from '../../../../components/OfficialLink.astro';
+
+<OfficialLink href="https://code.claude.com/docs/en/settings" label="官方 Settings 文档" />

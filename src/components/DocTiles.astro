@@ -1,0 +1,27 @@
+---
+interface Tile {
+	title: string;
+	href: string;
+	description: string;
+	label: string;
+}
+
+interface Props {
+	items: Tile[];
+	stagger?: boolean;
+}
+
+const { items, stagger = false } = Astro.props;
+---
+
+<div class:list={['doc-tile-grid', { 'motion-stagger-children': stagger }]}>
+	{
+		items.map((item) => (
+			<a class="doc-tile" href={item.href}>
+				<span>{item.label}</span>
+				<strong>{item.title}</strong>
+				<p>{item.description}</p>
+			</a>
+		))
+	}
+</div>

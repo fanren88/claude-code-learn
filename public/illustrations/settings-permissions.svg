@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+  <title id="title">Claude Code settings and permissions hierarchy</title>
+  <desc id="desc">A diagram showing settings priority and how allow or deny rules affect tool approval.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#172018"/>
+      <stop offset="1" stop-color="#101418"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2 2l8 4-8 4z" fill="#79D08A"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="680" rx="28" fill="url(#bg)"/>
+  <text x="64" y="78" fill="#F5F4EF" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="750">Settings decide the default path</text>
+  <text x="64" y="114" fill="#BAB8AF" font-family="Inter, Arial, sans-serif" font-size="18">Higher priority settings win. Risky actions can still ask for approval.</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <text x="94" y="176" fill="#79D08A" font-size="16" font-weight="800">Priority high</text>
+    <rect x="80" y="198" width="330" height="76" rx="16" fill="#263128" stroke="#79D08A"/>
+    <text x="112" y="245" fill="#F5F4EF" font-size="23" font-weight="800">Managed</text>
+    <text x="254" y="245" fill="#BAB8AF" font-size="16">organization policy</text>
+
+    <rect x="80" y="294" width="330" height="76" rx="16" fill="#202922" stroke="#445448"/>
+    <text x="112" y="341" fill="#F5F4EF" font-size="23" font-weight="800">Project</text>
+    <text x="238" y="341" fill="#BAB8AF" font-size="16">.claude/settings.json</text>
+
+    <rect x="80" y="390" width="330" height="76" rx="16" fill="#202922" stroke="#445448"/>
+    <text x="112" y="437" fill="#F5F4EF" font-size="23" font-weight="800">User</text>
+    <text x="205" y="437" fill="#BAB8AF" font-size="16">~/.claude/settings.json</text>
+
+    <rect x="80" y="486" width="330" height="76" rx="16" fill="#202922" stroke="#445448"/>
+    <text x="112" y="533" fill="#F5F4EF" font-size="23" font-weight="800">Local</text>
+    <text x="208" y="533" fill="#BAB8AF" font-size="16">settings.local.json</text>
+    <text x="94" y="604" fill="#BAB8AF" font-size="16">Priority low</text>
+  </g>
+
+  <path d="M448 380h126" stroke="#79D08A" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="600" y="214" width="230" height="112" rx="18" fill="#202922" stroke="#3A4C3D"/>
+    <text x="632" y="260" fill="#79D08A" font-size="17" font-weight="800">allow</text>
+    <text x="632" y="294" fill="#F5F4EF" font-size="20" font-weight="750">Read, Grep, Glob</text>
+
+    <rect x="600" y="360" width="230" height="112" rx="18" fill="#202922" stroke="#3A4C3D"/>
+    <text x="632" y="406" fill="#E58F67" font-size="17" font-weight="800">deny</text>
+    <text x="632" y="440" fill="#F5F4EF" font-size="20" font-weight="750">Write, Bash</text>
+
+    <rect x="905" y="286" width="220" height="118" rx="18" fill="#1C2529" stroke="#79D08A"/>
+    <text x="938" y="334" fill="#F2C86B" font-size="17" font-weight="800">Session result</text>
+    <text x="938" y="368" fill="#F5F4EF" font-size="20" font-weight="750">Auto, ask, or block</text>
+  </g>
+
+  <path d="M830 270c54 0 54 72 68 72" stroke="#79D08A" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M830 416c54 0 54-60 68-70" stroke="#E58F67" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+
+  <rect x="600" y="528" width="525" height="62" rx="16" fill="#121A16" stroke="#2C3830"/>
+  <text x="634" y="566" fill="#BAB8AF" font-family="Inter, Arial, sans-serif" font-size="18">Beginner tip: keep write and shell actions reviewable until you trust the project rules.</text>
+</svg>

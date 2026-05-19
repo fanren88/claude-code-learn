@@ -1,0 +1,48 @@
+---
+title: How to ask Claude Code on your first session
+description: A simple beginner prompt pattern for productive Claude Code sessions
+---
+
+Many beginners open Claude Code and type, "Improve this project." That can work, but the scope is too broad. Claude has to infer your goal, inspect the repository, and decide where to start, which makes the result harder to control.
+
+A better first prompt has three parts: goal, boundary, and verification.
+
+## A better prompt template
+
+```text
+I want to improve the homepage of this documentation site so beginners can find install, quickstart, and configuration content more easily.
+
+Please inspect the project structure and homepage files first, then explain what you plan to change.
+Only edit the homepage and styles. Do not change article content.
+After editing, run the build and report the result.
+```
+
+This works because:
+
+- The goal is clear.
+- The editing boundary is clear.
+- The workflow is clear.
+- The verification step is clear.
+
+## Keep approvals on at first
+
+When you are new, keep the default approval flow. If Claude Code wants to edit files or run commands, read the proposed action before approving it. Be especially careful with deletion, broad formatting, dependency installation, commits, and pushes.
+
+## Good first task sizes
+
+Start with:
+
+- Fixing one clear error
+- Updating one page or component
+- Adding a short doc page
+- Explaining a specific file
+- Writing an implementation plan
+
+Avoid starting with:
+
+- "Refactor the whole project"
+- "Optimize all the code"
+- "Deploy everything automatically"
+- "Do everything without asking me"
+
+Claude Code works best when you give it a clear direction and useful constraints.

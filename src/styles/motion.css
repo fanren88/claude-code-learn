@@ -1,0 +1,89 @@
+:root {
+	--motion-fast: 160ms;
+	--motion-enter: 280ms;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	@keyframes motion-fade-up {
+		from {
+			opacity: 0;
+			transform: translateY(8px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes motion-hero-grid {
+		0%,
+		100% {
+			background-position: 0 0;
+		}
+		50% {
+			background-position: 24px 24px;
+		}
+	}
+
+	@keyframes motion-pulse {
+		0%,
+		100% {
+			opacity: 1;
+		}
+		50% {
+			opacity: 0.55;
+		}
+	}
+
+	.page-hub .hero::before {
+		animation: motion-hero-grid 48s ease-in-out infinite;
+	}
+
+	.page-hub .motion-stagger-children > * {
+		animation: motion-fade-up var(--motion-enter) ease both;
+	}
+
+	.page-hub .motion-stagger-children > *:nth-child(1) {
+		animation-delay: 0ms;
+	}
+	.page-hub .motion-stagger-children > *:nth-child(2) {
+		animation-delay: 60ms;
+	}
+	.page-hub .motion-stagger-children > *:nth-child(3) {
+		animation-delay: 120ms;
+	}
+	.page-hub .motion-stagger-children > *:nth-child(4) {
+		animation-delay: 180ms;
+	}
+
+	.terminal-line {
+		opacity: 0;
+	}
+
+	.terminal-line.is-visible {
+		opacity: 1;
+		transition: opacity var(--motion-enter) ease;
+	}
+
+	.resource-section-header > span.is-pulsing {
+		animation: motion-pulse var(--motion-fast) ease;
+	}
+
+	.platform-tab-panel {
+		transition: opacity var(--motion-fast) ease;
+	}
+
+	.platform-tab-panel:not(.active) {
+		opacity: 0;
+	}
+
+	.platform-tab-panel.active {
+		opacity: 1;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.terminal-line {
+		opacity: 1;
+	}
+}

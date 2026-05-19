@@ -1,0 +1,26 @@
+---
+title: Settings overview
+description: Four-level configuration hierarchy
+---
+
+<figure class="doc-figure">
+  <img src="/illustrations/settings-permissions.svg" alt="Claude Code settings priority and allow deny permission rules" />
+  <figcaption>Settings decide the default behavior; permission rules decide whether a tool is allowed, reviewed, or blocked.</figcaption>
+</figure>
+
+| Level | Location | Controlled by |
+|-------|----------|---------------|
+| Managed | Org policy | Admin |
+| Project | `.claude/settings.json` | Team |
+| User | `~/.claude/settings.json` | You |
+| Local | `.claude/settings.local.json` | You (gitignored) |
+
+Use `/config` in a session for interactive editing.
+
+:::note
+Full Chinese guide: [/zh-cn/configure/settings-overview/](/zh-cn/configure/settings-overview/)
+:::
+
+import OfficialLink from '../../../../components/OfficialLink.astro';
+
+<OfficialLink href="https://code.claude.com/docs/en/configuration" label="Official configuration" />

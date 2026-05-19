@@ -1,0 +1,32 @@
+---
+title: Site Articles
+description: Original Claude Code articles maintained on this site
+---
+
+This section is for articles published directly on this site. Use it for tutorials, retrospectives, configuration notes, and longer Claude Code guides.
+
+## Published
+
+- [How to ask Claude Code on your first session](/en/articles/first-use/)
+
+## Good future topics
+
+- Common Claude Code errors and fixes
+- Writing a useful CLAUDE.md for your project
+- Beginner permission checklist
+- A complete real-world refactor walkthrough
+
+## Add your own article
+
+Create a new `.mdx` file in `src/content/docs/en/articles/` with frontmatter:
+
+```mdx
+---
+title: Article title
+description: What this article helps the reader do
+---
+
+Article body
+```
+
+Add it to the sidebar in `astro.config.mjs` if you want it to appear in navigation.

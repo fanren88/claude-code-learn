@@ -1,0 +1,60 @@
+---
+title: 登录与账号
+description: Claude Code 支持的账号类型与登录方式
+---
+
+Claude Code 需要登录后才能使用。
+
+## 支持的账号类型
+
+| 类型 | 说明 |
+|------|------|
+| Claude Pro / Max / Team / Enterprise | 推荐，订阅内使用 |
+| Claude Console | API 预付费；首次登录会创建「Claude Code」工作区便于计费 |
+| Amazon Bedrock / Google Vertex / Microsoft Foundry | 企业云部署 |
+
+## 怎么选？
+
+- **个人学习或日常开发**：优先用 Claude 订阅登录，路径最短。
+- **按 API 用量计费或自动化脚本**：使用 Console 账号更清楚。
+- **公司已有云合规要求**：使用企业配置的 Bedrock、Vertex 或 Foundry。
+
+不要把这几类账号混在同一个判断里：订阅适合交互使用，Console 适合 API 计费，企业云适合组织管控。
+
+## 登录
+
+```bash
+claude
+# 首次会提示登录
+```
+
+或在会话中：
+
+```
+/login
+```
+
+凭据会保存在本机，一般无需每次登录。切换账号同样使用 `/login`。
+
+## 凭证存储
+
+登录信息存储在本地（具体路径因平台而异）。详见[官方 Credential Management](https://code.claude.com/docs/en/authentication)。
+
+## 企业环境常见卡点
+
+| 现象 | 先检查 |
+|------|--------|
+| 浏览器授权后 CLI 仍失败 | 是否切回同一个终端窗口，代理是否拦截回调 |
+| 反复要求登录 | 本机凭据是否被清理，账号是否切换 |
+| 公司网络无法访问 | 代理、证书、SSO、防火墙策略 |
+| Console 费用不清楚 | 是否进入了正确 workspace，是否设置预算提醒 |
+
+如果你在公司设备上使用，先确认组织是否已经下发 Managed settings 或云提供商配置。企业配置通常优先级更高，个人本地改动未必能覆盖。
+
+## 下一步
+
+[5 分钟入门](/zh-cn/start/quickstart/)
+
+import OfficialLink from '../../../../components/OfficialLink.astro';
+
+<OfficialLink href="https://code.claude.com/docs/en/authentication" />

@@ -1,0 +1,15 @@
+# Claude Code Learn
+
+> Beginner-friendly community guides for Claude Code (install, configure, concepts, curated articles). Not official Anthropic documentation.
+
+## Docs
+
+- [Home (zh-CN)](https://example.com/zh-cn/)
+- [Home (en)](https://example.com/en/)
+- [Quickstart (zh-CN)](https://example.com/zh-cn/start/quickstart/)
+- [Installation (zh-CN)](https://example.com/zh-cn/start/install/)
+- [How it works (zh-CN)](https://example.com/zh-cn/concepts/how-it-works/)
+- [Settings overview (zh-CN)](https://example.com/zh-cn/configure/settings-overview/)
+- [Curated articles (zh-CN)](https://example.com/zh-cn/resources/)
+
+Replace example.com with your deployed domain after publishing.

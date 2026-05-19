@@ -1,0 +1,72 @@
+---
+title: Quickstart
+description: Install, sign in, and complete your first task in about 5 minutes
+---
+
+## Prerequisites
+
+- A terminal and a project directory  
+- A [Claude subscription](https://claude.com/pricing), [Console](https://console.anthropic.com/) account, or enterprise provider access  
+
+## 1. Install
+
+```bash
+curl -fsSL https://claude.ai/install.sh | bash
+```
+
+See [Installation](/en/start/install/) for Windows and other methods.
+
+## 2. Sign in
+
+```bash
+claude
+```
+
+Or run `/login` inside a session.
+
+## 3. Ask your first question
+
+```bash
+cd /path/to/your/project
+claude
+```
+
+```text
+what does this project do?
+```
+
+## 4. Make a small change
+
+```text
+add a hello world function to the main file
+```
+
+Approve the diff when prompted.
+
+## 5. Try Git
+
+```text
+commit my changes with a descriptive message
+```
+
+## Essential commands
+
+| Command | Purpose |
+|---------|---------|
+| `claude` | Interactive session |
+| `claude -p "query"` | One-shot, then exit |
+| `claude -c` | Continue last session |
+| `/help` | Slash commands |
+
+## Next
+
+- [Settings overview](/en/configure/settings-overview/)  
+- [Curated articles](/en/resources/)  
+
+:::note
+More detail in Chinese: [/zh-cn/start/quickstart/](/zh-cn/start/quickstart/)
+:::
+
+import OfficialLink from '../../../../components/OfficialLink.astro';
+
+<OfficialLink href="https://code.claude.com/docs/en/quickstart" label="Official quickstart" />

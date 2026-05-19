@@ -1,0 +1,133 @@
+---
+title: Claude Code Learn
+description: Beginner-friendly Claude Code learning paths, setup notes, concepts, and curated articles
+template: splash
+hero:
+  tagline: Learn Claude Code through setup, configuration, core concepts, and real project workflows
+  actions:
+    - text: 5-minute quickstart
+      link: /en/start/quickstart/
+      icon: right-arrow
+    - text: Curated articles
+      link: /en/resources/
+      icon: document
+      variant: minimal
+---
+
+import LearningPath from '../../../components/LearningPath.astro';
+import ArticlePreview from '../../../components/ArticlePreview.astro';
+import HomeShowcase from '../../../components/HomeShowcase.astro';
+import DocTiles from '../../../components/DocTiles.astro';
+
+<HomeShowcase locale="en" />
+
+## Quick start
+
+<DocTiles
+  stagger
+  items={[
+    {
+      label: '01',
+      title: 'Install',
+      href: '/en/start/install/',
+      description: 'System requirements, native installer, Homebrew, WinGet, and verification.',
+    },
+    {
+      label: '02',
+      title: 'First conversation',
+      href: '/en/start/quickstart/',
+      description: 'Sign in, run claude, ask the first question, and review the first edit.',
+    },
+    {
+      label: '03',
+      title: 'Configure',
+      href: '/en/configure/settings-overview/',
+      description: 'Understand settings.json, permissions, and beginner-friendly defaults.',
+    },
+  ]}
+/>
+
+<div class="hub-section">
+
+## Learning path
+
+<LearningPath
+  locale="en"
+  steps={[
+    {
+      title: 'Install Claude Code',
+      href: '/en/start/install/',
+      description: 'Pick an install method for your OS.',
+    },
+    {
+      title: 'Sign in',
+      href: '/en/start/authentication/',
+      description: 'Claude Pro, Console, or enterprise providers.',
+    },
+    {
+      title: 'First task',
+      href: '/en/start/quickstart/',
+      description: 'Ask questions and approve your first code change.',
+    },
+    {
+      title: 'How it works',
+      href: '/en/concepts/how-it-works/',
+      description: 'Agent loop, tools, and permission prompts.',
+    },
+    {
+      title: 'CLAUDE.md',
+      href: '/en/concepts/context/',
+      description: 'Give Claude project context.',
+    },
+  ]}
+/>
+
+</div>
+
+<div class="hub-section">
+
+## Core capabilities
+
+<DocTiles
+  stagger
+  items={[
+    {
+      label: 'Control',
+      title: 'Tools & permissions',
+      href: '/en/concepts/tools-and-permissions/',
+      description: 'Bash, file edits, repo search, and when Claude Code asks for approval.',
+    },
+    {
+      label: 'Extend',
+      title: 'MCP',
+      href: '/en/concepts/mcp/',
+      description: 'Connect databases, APIs, and external tools through MCP.',
+    },
+    {
+      label: 'Automate',
+      title: 'Skills & Hooks',
+      href: '/en/concepts/skills-and-hooks/',
+      description: 'Reuse skill packages and turn repeated work into stable routines.',
+    },
+    {
+      label: 'Workflows',
+      title: 'Interfaces',
+      href: '/en/start/interfaces/',
+      description: 'CLI, Desktop, VS Code, Web, and CI/CD usage patterns.',
+    },
+  ]}
+/>
+
+</div>
+
+<div class="hub-section">
+
+## Curated articles
+
+<ArticlePreview locale="en" limit={3} />
+
+[View all →](/en/resources/)
+
+</div>
+
+> Community learning site — not official Anthropic documentation. See the [official docs](https://code.claude.com/docs/en/quickstart) for authoritative reference.
