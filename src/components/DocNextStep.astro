@@ -4,10 +4,7 @@ import { getTrailContext } from '../data/doc-trails';
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
 const ctx = getTrailContext(pathname.endsWith('/') ? pathname : `${pathname}/`);
 
-const isEn = ctx?.locale === 'en';
-const copy = isEn
-	? { next: 'Next up', progress: 'Completed', progressOf: 'of', pages: 'pages in the trail' }
-	: { next: '下一步', progress: '已完成', progressOf: '/', pages: '篇教程' };
+const copy = { next: '下一步', progress: '已完成', progressOf: '/', pages: '篇教程' };
 
 const show =
 	ctx &&
@@ -16,7 +13,7 @@ const show =
 	ctx.slug !== 'resources' &&
 	ctx.slug !== 'help/about';
 
-const nextHref = ctx?.next ? `/${ctx.locale}/${ctx.next.slug}/` : '';
+const nextHref = ctx?.next ? `/${ctx.next.slug}/` : '';
 const progressPaths = ctx?.trailPaths ? JSON.stringify(ctx.trailPaths) : '[]';
 const progressTotal = ctx?.trailPaths?.length ?? 0;
 ---

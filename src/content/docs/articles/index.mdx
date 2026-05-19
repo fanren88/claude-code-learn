@@ -1,0 +1,33 @@
+---
+title: 站内文章
+description: 本站原创或整理的 Claude Code 深度文章
+---
+
+这里收录本站自己维护的文章。和「精选文章」不同，这里的内容会直接发布在本站内，适合写教程、经验复盘、配置清单或案例分析。
+
+## 已发布
+
+- [第一次使用 Claude Code 应该怎么问](/articles/first-use/)
+- [在 Obsidian 里使用 Claude Code](/articles/obsidian-claude-code/)
+
+## 后续适合添加的文章
+
+- Claude Code 常见报错排查
+- 如何为项目写一份好用的 CLAUDE.md
+- 新手权限配置清单
+- 用 Claude Code 做一次真实重构的完整记录
+
+## 如何上传自己的文章
+
+在 `src/content/docs/articles/` 新建一个 `.mdx` 文件，并在文件开头加入标题信息：
+
+```mdx
+---
+title: 文章标题
+description: 一句话说明文章解决什么问题
+---
+
+正文内容
+```
+
+如果要让文章出现在左侧导航里，也需要在 `astro.config.mjs` 的 sidebar 中追加对应条目。

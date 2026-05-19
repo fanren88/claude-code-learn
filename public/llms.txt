@@ -1,15 +1,14 @@
 # Claude Code Learn
 
-> Beginner-friendly community guides for Claude Code (install, configure, concepts, curated articles). Not official Anthropic documentation.
+> 面向初学者的 Claude Code 中文学习站（安装、配置、原理、精选文章）。非 Anthropic 官方文档。
 
 ## Docs
 
-- [Home (zh-CN)](https://example.com/zh-cn/)
-- [Home (en)](https://example.com/en/)
-- [Quickstart (zh-CN)](https://example.com/zh-cn/start/quickstart/)
-- [Installation (zh-CN)](https://example.com/zh-cn/start/install/)
-- [How it works (zh-CN)](https://example.com/zh-cn/concepts/how-it-works/)
-- [Settings overview (zh-CN)](https://example.com/zh-cn/configure/settings-overview/)
-- [Curated articles (zh-CN)](https://example.com/zh-cn/resources/)
+- [首页](https://example.com/)
+- [5 分钟入门](https://example.com/start/quickstart/)
+- [安装](https://example.com/start/install/)
+- [工作原理](https://example.com/concepts/how-it-works/)
+- [配置概览](https://example.com/configure/settings-overview/)
+- [精选文章](https://example.com/resources/)
 
-Replace example.com with your deployed domain after publishing.
+部署后请将 example.com 替换为你的实际域名。

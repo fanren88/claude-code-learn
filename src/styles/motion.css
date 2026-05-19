@@ -35,7 +35,7 @@
 		}
 	}
 
-	.page-hub .hero::before {
+	.page-hub .home-hero-bg {
 		animation: motion-hero-grid 48s ease-in-out infinite;
 	}
 
@@ -85,5 +85,9 @@
 @media (prefers-reduced-motion: reduce) {
 	.terminal-line {
 		opacity: 1;
+	}
+
+	.terminal-cursor {
+		animation: none;
 	}
 }

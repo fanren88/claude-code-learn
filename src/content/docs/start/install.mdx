@@ -1,0 +1,102 @@
+---
+title: 安装
+description: Claude Code 系统要求与各平台安装方式
+---
+
+## 系统要求
+
+| 项目 | 要求 |
+|------|------|
+| 操作系统 | macOS 13+、Windows 10 1809+、Ubuntu 20.04+、Debian 10+、Alpine 3.19+ |
+| 内存 | 4 GB 及以上 |
+| 架构 | x64 或 ARM64 |
+| 网络 | 需要联网 |
+
+<figure class="doc-figure">
+  <img src="/illustrations/install-paths.svg" alt="Claude Code 在 macOS、Linux、Windows 与包管理器中的安装路径示意图" />
+  <figcaption>先选一种安装路径，最后都用 <code>claude --version</code> 验证是否安装成功。</figcaption>
+</figure>
+
+## 推荐：Native 安装
+
+自动后台更新，一般最省心。
+
+import PlatformTabs from '../../../components/PlatformTabs.astro';
+
+<PlatformTabs tabs={[{ label: 'macOS / Linux', id: 'unix' }, { label: 'Windows', id: 'win' }]}>
+
+<div class="platform-tab-panel active" data-panel="unix">
+
+```bash
+curl -fsSL https://claude.ai/install.sh | bash
+```
+
+</div>
+
+<div class="platform-tab-panel" data-panel="win">
+
+**PowerShell：**
+
+```powershell
+irm https://claude.ai/install.ps1 | iex
+```
+
+**CMD：**
+
+```batch
+curl -fsSL https://claude.ai/install.cmd -o install.cmd && install.cmd && del install.cmd
+```
+
+Windows 建议安装 [Git for Windows](https://git-scm.com/downloads/win)，以便使用 Bash 工具。
+
+</div>
+
+</PlatformTabs>
+
+## Homebrew（macOS）
+
+```bash
+brew install --cask claude-code
+```
+
+- `claude-code`：稳定通道
+- `claude-code@latest`：最新通道
+
+Homebrew **不会**自动更新，需手动：`brew upgrade claude-code`
+
+## WinGet（Windows）
+
+```powershell
+winget install Anthropic.ClaudeCode
+```
+
+需手动：`winget upgrade Anthropic.ClaudeCode`
+
+## Linux 包管理器
+
+Debian / Ubuntu、Fedora / RHEL、Alpine 等可用 apt、dnf、apk 安装，详见[官方 Setup](https://code.claude.com/docs/en/setup)。
+
+## 验证安装
+
+```bash
+claude --version
+```
+
+## 常见问题
+
+**命令找不到 `claude`**
+
+- 重启终端，或把安装目录加入 `PATH`
+- Native 安装后按终端提示执行 `source` 相关配置
+
+**Windows 上 Bash 不可用**
+
+- 安装 Git for Windows，或在 WSL 内使用 Claude Code
+
+## 下一步
+
+[登录与账号](/start/authentication/) → [5 分钟入门](/start/quickstart/)
+
+import OfficialLink from '../../../components/OfficialLink.astro';
+
+<OfficialLink href="https://code.claude.com/docs/en/setup" />

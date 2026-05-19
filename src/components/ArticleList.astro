@@ -17,108 +17,54 @@ interface Article {
 	tip?: string;
 }
 
-interface Props {
-	locale?: 'zh-cn' | 'en';
-}
-
-const { locale = 'zh-cn' } = Astro.props;
-const isEn = locale === 'en';
 const allTags = [...new Set((articles as Article[]).flatMap((a) => a.tags))];
-const labels = isEn
-	? {
-			search: 'Search resources…',
-			all: 'All',
-			tip: 'Tip',
-			level: 'Level',
-			noResults: 'No matching resources.',
-			pathsTitle: 'Recommended Paths',
-			paths: [
-				{
-					title: 'Start here',
-					description: 'Install Claude Code, run the first task, then compare with the official quickstart.',
-					ids: ['official-quickstart'],
-				},
-				{
-					title: 'Configure safely',
-					description: 'Learn settings and permissions before loosening tool access.',
-					ids: ['official-configuration'],
-				},
-				{
-					title: 'Hands-on practice',
-					description: 'Use best practices and video walkthroughs to build muscle memory.',
-					ids: ['official-best-practices', 'youtube-claude-code-playlist'],
-				},
-			],
-			categories: {
-				official: {
-					title: 'Official Docs',
-					description: 'Primary sources for commands, configuration, and behavior.',
-				},
-				video: {
-					title: 'Video Tutorials',
-					description: 'External videos for seeing workflows in motion.',
-				},
-				practice: {
-					title: 'Practice & Best Practices',
-					description: 'Resources that help turn concepts into everyday workflows.',
-				},
-				advanced: {
-					title: 'Advanced Topics',
-					description: 'Extensions, protocols, and deeper mental models.',
-				},
-				other: {
-					title: 'Other Resources',
-					description: 'Useful links that do not fit the main groups yet.',
-				},
-			},
-		}
-	: {
-			search: '搜索资源…',
-			all: '全部',
-			tip: '读后提示',
-			level: '阶段',
-			noResults: '没有匹配的资源。',
-			pathsTitle: '推荐学习路径',
-			paths: [
-				{
-					title: '新手入门',
-					description: '先完成安装与第一次任务，再对照官方 Quickstart 校准命令。',
-					ids: ['official-quickstart'],
-				},
-				{
-					title: '安全配置',
-					description: '先理解 settings 与权限，再逐步放宽工具调用。',
-					ids: ['official-configuration'],
-				},
-				{
-					title: '实操进阶',
-					description: '用最佳实践和视频教程，把概念变成稳定工作流。',
-					ids: ['official-best-practices', 'youtube-claude-code-playlist'],
-				},
-			],
-			categories: {
-				official: {
-					title: '官方文档',
-					description: '命令、配置和行为变化的第一事实来源。',
-				},
-				video: {
-					title: '视频教程',
-					description: '适合用观看方式理解操作流程。',
-				},
-				practice: {
-					title: '实操与最佳实践',
-					description: '把概念转成日常工作流的材料。',
-				},
-				advanced: {
-					title: '进阶主题',
-					description: '扩展能力、协议和更深入的心智模型。',
-				},
-				other: {
-					title: '其他资源',
-					description: '暂时不归入主分类，但值得保留的链接。',
-				},
-			},
-		};
+const labels = {
+	search: '搜索资源…',
+	all: '全部',
+	tip: '读后提示',
+	level: '阶段',
+	noResults: '没有匹配的资源。',
+	pathsTitle: '推荐学习路径',
+	paths: [
+		{
+			title: '新手入门',
+			description: '先完成安装与第一次任务，再对照官方 Quickstart 校准命令。',
+			ids: ['official-quickstart'],
+		},
+		{
+			title: '安全配置',
+			description: '先理解 settings 与权限，再逐步放宽工具调用。',
+			ids: ['official-configuration'],
+		},
+		{
+			title: '实操进阶',
+			description: '用最佳实践和视频教程，把概念变成稳定工作流。',
+			ids: ['official-best-practices', 'youtube-claude-code-playlist'],
+		},
+	],
+	categories: {
+		official: {
+			title: '官方文档',
+			description: '命令、配置和行为变化的第一事实来源。',
+		},
+		video: {
+			title: '视频教程',
+			description: '适合用观看方式理解操作流程。',
+		},
+		practice: {
+			title: '实操与最佳实践',
+			description: '把概念转成日常工作流的材料。',
+		},
+		advanced: {
+			title: '进阶主题',
+			description: '扩展能力、协议和更深入的心智模型。',
+		},
+		other: {
+			title: '其他资源',
+			description: '暂时不归入主分类，但值得保留的链接。',
+		},
+	},
+};
 
 const categoryOrder = ['official', 'video', 'practice', 'advanced', 'other'];
 const groupedArticles = categoryOrder
@@ -144,7 +90,7 @@ const articleById = new Map((articles as Article[]).map((article) => [article.id
 						{path.ids.map((id) => {
 							const article = articleById.get(id);
 							if (!article) return null;
-							const title = isEn && article.titleEn ? article.titleEn : article.title;
+							const title = article.title;
 							return (
 								<li>
 									<label>
@@ -209,13 +155,13 @@ const articleById = new Map((articles as Article[]).map((article) => [article.id
 							</div>
 							<h3>
 								<a href={article.url} target="_blank" rel="noopener noreferrer">
-									{isEn && article.titleEn ? article.titleEn : article.title}
+									{article.title}
 								</a>
 							</h3>
 							<p class="article-meta">
 								{article.author} · {article.date}
 							</p>
-							<p>{isEn && article.summaryEn ? article.summaryEn : article.summary}</p>
+							<p>{article.summary}</p>
 							{article.tip && (
 								<p>
 									<strong>{labels.tip}:</strong> {article.tip}

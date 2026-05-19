@@ -1,18 +1,9 @@
 const VISITED_KEY = 'cc-learn-visited-v1';
 const RESOURCES_KEY = 'cc-learn-resources-v1';
 
-export type Locale = 'zh-cn' | 'en';
-
 export function normalizePath(pathname: string): string | null {
-	const match = pathname.match(/^\/(zh-cn|en)\/(.+?)\/?$/);
-	if (!match) return null;
-	return `/${match[1]}/${match[2]}/`;
-}
-
-export function getLocaleFromPath(pathname: string): Locale | null {
-	if (pathname.startsWith('/en/') || pathname === '/en') return 'en';
-	if (pathname.startsWith('/zh-cn/') || pathname === '/zh-cn') return 'zh-cn';
-	return null;
+	if (pathname === '/' || pathname === '') return null;
+	return pathname.endsWith('/') ? pathname : `${pathname}/`;
 }
 
 export function markVisited(pathname: string): void {
@@ -64,7 +55,8 @@ export function prefersReducedMotion(): boolean {
 
 function isInternalDocLink(href: string): boolean {
 	if (!href.startsWith('/') || href.startsWith('//')) return false;
-	return /^\/(zh-cn|en)\//.test(href);
+	if (/\.[a-z0-9]+$/i.test(href)) return false;
+	return true;
 }
 
 function updateProgressCounts(): void {
@@ -95,9 +87,8 @@ function updateContinueBanner(): void {
 	const banner = document.querySelector('[data-continue-learning]');
 	if (!(banner instanceof HTMLElement)) return;
 	const stepsRaw = banner.dataset.continueSteps;
-	const locale = banner.dataset.continueLocale as Locale | undefined;
 	const resourcesHref = banner.dataset.continueResources;
-	if (!stepsRaw || !locale || !resourcesHref) return;
+	if (!stepsRaw || !resourcesHref) return;
 
 	const steps: { href: string; title: string }[] = JSON.parse(stepsRaw);
 	const visited = getVisited();
@@ -112,18 +103,14 @@ function updateContinueBanner(): void {
 	if (next && label && link) {
 		banner.classList.remove('is-complete');
 		banner.hidden = false;
-		const isEn = locale === 'en';
-		label.textContent = isEn ? `Continue: ${next.title}` : `继续：${next.title}`;
+		label.textContent = `继续：${next.title}`;
 		link.href = next.href;
-		link.textContent = isEn ? 'Open lesson' : '继续学习';
+		link.textContent = '继续学习';
 	} else if (label && link) {
 		banner.classList.add('is-complete');
-		const isEn = locale === 'en';
-		label.textContent = isEn
-			? 'You finished the learning path — explore curated resources next.'
-			: '学习路径已完成 — 去看看精选资源吧。';
+		label.textContent = '学习路径已完成 — 去看看精选资源吧。';
 		link.href = resourcesHref;
-		link.textContent = isEn ? 'Browse resources' : '查看精选资源';
+		link.textContent = '查看精选资源';
 		banner.hidden = false;
 	}
 }
@@ -149,7 +136,7 @@ export function initProgressTracking(): void {
 	markVisited(window.location.pathname);
 	refreshProgressUI();
 
-	if (document.querySelector('.home-showcase')) {
+	if (document.querySelector('.home-hero')) {
 		document.body.classList.add('page-hub');
 	}
 

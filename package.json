@@ -2,7 +2,7 @@
   "name": "claude-code-doc",
   "type": "module",
   "version": "0.1.0",
-  "description": "Beginner-friendly Claude Code documentation site (zh-cn + en)",
+  "description": "面向初学者的 Claude Code 中文学习站",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

@@ -1,40 +1,40 @@
 # Claude Code Learn
 
-Beginner-friendly documentation for [Claude Code](https://code.claude.com/docs/en/quickstart) — install, configure, concepts, and curated articles. Available in **简体中文** and **English**.
+面向初学者的 [Claude Code](https://code.claude.com/docs/en/quickstart) 中文学习站 — 安装、配置、原理与精选文章。
 
-> Community learning site. Not official Anthropic documentation.
+> 社区学习站，非 Anthropic 官方文档。
 
-## Local development
+## 本地开发
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:4321/zh-cn/](http://localhost:4321/zh-cn/) (default locale).
+在浏览器打开 [http://localhost:4321/](http://localhost:4321/)。
 
-## Build
+## 构建
 
 ```bash
 npm run build
 npm run preview
 ```
 
-## Deploy
+## 部署
 
-### Vercel (recommended)
+### Vercel（推荐）
 
-1. Import this repository in [Vercel](https://vercel.com)
-2. Framework preset: **Astro**
-3. Build command: `npm run build`
-4. Output directory: `dist`
+1. 在 [Vercel](https://vercel.com) 导入本仓库
+2. Framework preset：**Astro**
+3. Build command：`npm run build`
+4. Output directory：`dist`
 
 ### GitHub Pages
 
-1. Enable **Pages** → Source: **GitHub Actions**
-2. Push to `main` — the included workflow builds and deploys `dist`
+1. 启用 **Pages** → Source：**GitHub Actions**
+2. 推送到 `main` — 内置 workflow 会构建并部署 `dist`
 
-For project sites, set `base` in `astro.config.mjs`:
+若使用项目站点，在 `astro.config.mjs` 中设置 `base`：
 
 ```js
 export default defineConfig({
@@ -44,21 +44,20 @@ export default defineConfig({
 });
 ```
 
-Update `public/llms.txt` with your real domain after deploy.
+部署后请把 `public/llms.txt` 中的域名改成你的实际域名。
 
-## Add articles
+## 添加文章
 
-- Add curated external links in [`src/data/articles.json`](src/data/articles.json).
-- Add site-owned articles as `.mdx` files under `src/content/docs/zh-cn/articles/` and `src/content/docs/en/articles/`.
-- Add new article pages to `astro.config.mjs` if they should appear in the sidebar.
+- 在 [`src/data/articles.json`](src/data/articles.json) 中添加精选外链。
+- 在 `src/content/docs/articles/` 下新建 `.mdx` 站内文章。
+- 若需出现在侧边栏，在 `astro.config.mjs` 的 `sidebar` 中登记。
 
-## Project structure
+## 项目结构
 
 ```
-src/content/docs/zh-cn/   # Chinese content
-src/content/docs/en/      # English content
-src/components/           # Hub UI components
-src/data/articles.json    # Curated external links
+src/content/docs/       # 中文文档内容
+src/components/         # 首页与文档 UI 组件
+src/data/articles.json  # 精选外链
 ```
 
 ## License

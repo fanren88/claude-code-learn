@@ -1,0 +1,17 @@
+---
+interface Props {
+	id?: string;
+	title: string;
+	lead?: string;
+}
+
+const { id, title, lead } = Astro.props;
+---
+
+<section class:list={['hub-section', id && `hub-section--${id}`]} id={id}>
+	<header class="hub-section-head">
+		<h2>{title}</h2>
+		{lead && <p>{lead}</p>}
+	</header>
+	<slot />
+</section>

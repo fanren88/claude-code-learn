@@ -1,0 +1,24 @@
+---
+const features = [
+	{ title: 'Agent 循环', desc: '工具调用、权限确认与可审查的改动' },
+	{ title: '项目上下文', desc: 'CLAUDE.md、会话与代码库理解' },
+	{ title: 'MCP 扩展', desc: '安全接入 API、数据库与外部工具' },
+	{ title: 'Skills & Hooks', desc: '复用技能包，把重复工作流程化' },
+];
+---
+
+<section class="home-feature-strip" aria-label="核心亮点">
+	<ul class="home-feature-list">
+		{
+			features.map((feature) => (
+				<li class="home-feature-item">
+					<span class="home-feature-icon" aria-hidden="true"></span>
+					<div>
+						<h3>{feature.title}</h3>
+						<p>{feature.desc}</p>
+					</div>
+				</li>
+			))
+		}
+	</ul>
+</section>
