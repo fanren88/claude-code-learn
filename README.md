@@ -1,8 +1,16 @@
-# Claude Code Learn
+# Claude Code 中文学习指南
 
-面向初学者的 [Claude Code](https://code.claude.com/docs/en/quickstart) 中文学习站 — 安装、配置、原理与精选文章。
+面向初学者的 [Claude Code](https://docs.anthropic.com/en/docs/claude-code) 中文学习站，采用 Next.js App Router 结构，首页与导航对齐参考项目的六大栏目：
+
+- 学习路径
+- 学习路线
+- 场景教程
+- 实战工坊
+- 资源
+- 命令速查
 
 > 社区学习站，非 Anthropic 官方文档。
+> 内容最后核对日期：2026-05-20。命令、安装方式和权限配置请以官方英文文档为准。
 
 ## 本地开发
 
@@ -11,53 +19,28 @@ npm install
 npm run dev
 ```
 
-在浏览器打开 [http://localhost:4321/](http://localhost:4321/)。
+浏览器访问 [http://localhost:3000/](http://localhost:3000/)。
 
 ## 构建
 
 ```bash
 npm run build
-npm run preview
+npm run start
 ```
 
-## 部署
+## 技术栈
 
-### Vercel（推荐）
+- Next.js 15（App Router）
+- React 19
+- Tailwind CSS v4
+- TypeScript
 
-1. 在 [Vercel](https://vercel.com) 导入本仓库
-2. Framework preset：**Astro**
-3. Build command：`npm run build`
-4. Output directory：`dist`
+## 目录结构
 
-### GitHub Pages
-
-1. 启用 **Pages** → Source：**GitHub Actions**
-2. 推送到 `main` — 内置 workflow 会构建并部署 `dist`
-
-若使用项目站点，在 `astro.config.mjs` 中设置 `base`：
-
-```js
-export default defineConfig({
-  site: 'https://<user>.github.io',
-  base: '/claude-code-doc',
-  // ...
-});
-```
-
-部署后请把 `public/llms.txt` 中的域名改成你的实际域名。
-
-## 添加文章
-
-- 在 [`src/data/articles.json`](src/data/articles.json) 中添加精选外链。
-- 在 `src/content/docs/articles/` 下新建 `.mdx` 站内文章。
-- 若需出现在侧边栏，在 `astro.config.mjs` 的 `sidebar` 中登记。
-
-## 项目结构
-
-```
-src/content/docs/       # 中文文档内容
-src/components/         # 首页与文档 UI 组件
-src/data/articles.json  # 精选外链
+```txt
+app/           # 页面路由
+components/    # 站点组件（Hero、Header、PathCard 等）
+lib/           # 配置与工具函数
 ```
 
 ## License
