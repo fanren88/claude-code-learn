@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 const scenarios = [
+  { href: "/guides/deepseek", title: "接入 DeepSeek", desc: "用 Anthropic 兼容接口在 Claude Code 里调用 DeepSeek 模型。" },
   { href: "/guides/prompting", title: "提示词拆解", desc: "把任务目标、边界和验收标准讲清楚。" },
   { href: "/guides/git-workflows", title: "Git 协作", desc: "围绕 diff、提交和审查形成稳定流程。" },
   { href: "/concepts/tools-and-permissions", title: "工具与权限", desc: "控制风险操作，理解确认弹窗与权限边界。" },

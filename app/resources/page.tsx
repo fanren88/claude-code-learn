@@ -36,6 +36,22 @@ const sections = [
         href: siteConfig.github,
         sub: "anthropics/claude-code",
       },
+      {
+        label: "DeepSeek × Claude Code 集成",
+        href: "https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code",
+        sub: "Anthropic 兼容接口与环境变量说明",
+      },
+    ],
+  },
+  {
+    title: "站内教程",
+    icon: BookOpen,
+    links: [
+      {
+        label: "Claude Code 接入 DeepSeek（中文）",
+        href: "/guides/deepseek",
+        sub: "环境变量、持久化配置、模型映射与排错",
+      },
     ],
   },
   {
