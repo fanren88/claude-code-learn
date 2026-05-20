@@ -4,6 +4,8 @@ export type DomesticProvider = {
   models: string;
   baseUrl: string;
   signupUrl: string;
+  /** 平台提供的 Claude Code 接入说明（外链） */
+  docsUrl?: string;
   note: string;
   envExample: string;
 };
@@ -26,7 +28,8 @@ export ANTHROPIC_MODEL=deepseek-chat`,
     models: "glm-4-plus 等（以智谱开放平台为准）",
     baseUrl: "https://open.bigmodel.cn/api/anthropic",
     signupUrl: "https://open.bigmodel.cn/usercenter/apikeys",
-    note: "国内访问稳定，文档对 Claude Code 兼容说明较全。",
+    docsUrl: "https://docs.bigmodel.cn/cn/coding-plan/tool/claude",
+    note: "国内访问稳定，支持 GLM Coding Plan；官方文档含环境变量、settings.json 与模型映射说明。",
     envExample: `export ANTHROPIC_BASE_URL=https://open.bigmodel.cn/api/anthropic
 export ANTHROPIC_AUTH_TOKEN=<你的 API Key>
 export ANTHROPIC_MODEL=glm-4-plus`,

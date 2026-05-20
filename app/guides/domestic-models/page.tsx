@@ -92,16 +92,35 @@ export default function DomesticModelsPage() {
             <div key={p.id} className="rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-[var(--bg-card)] p-5">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <h3 className="font-display text-lg text-[var(--accent-gold)]">{p.name}</h3>
-                {p.id === "deepseek" ? (
-                  <Link href="/guides/deepseek" className="text-sm text-[var(--accent-gold)] hover:underline">
-                    完整教程 →
-                  </Link>
-                ) : (
-                  <a href={p.signupUrl} className="inline-flex items-center gap-1 text-sm text-[var(--accent-gold)] hover:underline" target="_blank" rel="noopener noreferrer">
-                    去注册
-                    <ExternalLink className="size-3" aria-hidden />
-                  </a>
-                )}
+                <div className="flex flex-wrap items-center gap-3">
+                  {p.id === "deepseek" ? (
+                    <Link href="/guides/deepseek" className="text-sm text-[var(--accent-gold)] hover:underline">
+                      完整教程 →
+                    </Link>
+                  ) : null}
+                  {p.docsUrl ? (
+                    <a
+                      href={p.docsUrl}
+                      className="inline-flex items-center gap-1 text-sm text-[var(--accent-gold)] hover:underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Claude Code 配置文档
+                      <ExternalLink className="size-3" aria-hidden />
+                    </a>
+                  ) : null}
+                  {p.id !== "deepseek" ? (
+                    <a
+                      href={p.signupUrl}
+                      className="inline-flex items-center gap-1 text-sm text-[var(--accent-gold)] hover:underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      去注册
+                      <ExternalLink className="size-3" aria-hidden />
+                    </a>
+                  ) : null}
+                </div>
               </div>
               <p className="mt-2 text-sm text-[var(--text-secondary)]">{p.note}</p>
               <dl className="mt-3 grid gap-2 text-sm sm:grid-cols-2">
