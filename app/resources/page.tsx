@@ -41,12 +41,22 @@ const sections = [
         href: "https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code",
         sub: "Anthropic 兼容接口与环境变量说明",
       },
+      {
+        label: "Agent Skills 工程博客",
+        href: "https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills",
+        sub: "Skills 目录结构、渐进式披露与安全实践",
+      },
     ],
   },
   {
     title: "站内教程",
     icon: BookOpen,
     links: [
+      {
+        label: "延伸阅读",
+        href: "/reading",
+        sub: "精选官方工程博客与社区长文",
+      },
       {
         label: "零基础新手线",
         href: "/learn/beginner",
@@ -55,17 +65,17 @@ const sections = [
       {
         label: "国产模型接入总览",
         href: "/guides/domestic-models",
-        sub: "选型、环境变量、Windows 注意与付费方式",
+        sub: "DeepSeek、GLM、Kimi 等选型与环境变量；各平台含配置文档链接",
+      },
+      {
+        label: "DeepSeek 详细接入",
+        href: "/guides/deepseek",
+        sub: "国产模型子教程：模型映射、持久化配置与排错",
       },
       {
         label: "CC Switch 图形化配置",
         href: "/guides/cc-switch",
         sub: "一键切换多套 API，适合不想手改变量的用户",
-      },
-      {
-        label: "Claude Code 接入 DeepSeek（中文）",
-        href: "/guides/deepseek",
-        sub: "环境变量、持久化配置、模型映射与排错",
       },
       {
         label: "第一个小工具（实战）",

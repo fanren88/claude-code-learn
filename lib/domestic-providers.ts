@@ -4,6 +4,8 @@ export type DomesticProvider = {
   models: string;
   baseUrl: string;
   signupUrl: string;
+  /** 本站详细接入教程（内链） */
+  guideUrl?: string;
   /** 平台提供的 Claude Code 接入说明（外链） */
   docsUrl?: string;
   note: string;
@@ -17,7 +19,9 @@ export const domesticProviders: DomesticProvider[] = [
     models: "deepseek-chat / deepseek-reasoner 等（以平台文档为准）",
     baseUrl: "https://api.deepseek.com/anthropic",
     signupUrl: "https://platform.deepseek.com/api_keys",
-    note: "性价比高，适合日常改代码。本站有完整接入教程。",
+    guideUrl: "/guides/deepseek",
+    docsUrl: "https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code",
+    note: "性价比高，适合日常改代码；本站有模型映射与排错教程。",
     envExample: `export ANTHROPIC_BASE_URL=https://api.deepseek.com/anthropic
 export ANTHROPIC_AUTH_TOKEN=<你的 API Key>
 export ANTHROPIC_MODEL=deepseek-chat`,

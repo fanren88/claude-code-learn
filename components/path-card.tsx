@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BookOpen, Compass, FlaskConical, Layers, Library, TerminalSquare } from "lucide-react";
+import { ArrowRight, BookOpen, Compass, FlaskConical, Layers, Library, Newspaper, TerminalSquare } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const icons = {
@@ -8,6 +8,7 @@ const icons = {
   scenarios: Layers,
   labs: FlaskConical,
   resources: Library,
+  reading: Newspaper,
   cheatsheet: TerminalSquare,
 } as const;
 

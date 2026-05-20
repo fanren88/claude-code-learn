@@ -84,13 +84,16 @@ function CodeBlock({ children, title }: { children: string; title?: string }) {
 export default function DeepSeekGuidePage() {
   return (
     <article className="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-14">
-      <Link href="/scenarios" className="inline-flex items-center gap-1.5 text-sm text-[var(--text-muted)] transition hover:text-[var(--accent-gold)]">
+      <Link
+        href="/guides/domestic-models#deepseek"
+        className="inline-flex items-center gap-1.5 text-sm text-[var(--text-muted)] transition hover:text-[var(--accent-gold)]"
+      >
         <ArrowLeft className="size-4" aria-hidden />
-        返回场景教程
+        返回国产模型接入
       </Link>
 
       <header className="mt-6 border-b border-[var(--border-subtle)] pb-8">
-        <p className="font-mono text-xs uppercase tracking-widest text-[var(--accent-gold)]">Guide</p>
+        <p className="font-mono text-xs uppercase tracking-widest text-[var(--accent-gold)]">国产模型 · DeepSeek</p>
         <h1 className="mt-3 font-display text-3xl font-semibold text-[var(--text-primary)] sm:text-4xl">Claude Code 接入 DeepSeek</h1>
         <p className="mt-3 text-lg text-[var(--text-secondary)]">
           保留 Claude Code 的终端体验与工具链，把模型请求转发到 DeepSeek 的 Anthropic 兼容接口，适合想用更低成本做日常编码的场景。

@@ -89,12 +89,16 @@ export default function DomesticModelsPage() {
         </p>
         <div className="mt-4 space-y-4">
           {domesticProviders.map((p) => (
-            <div key={p.id} className="rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-[var(--bg-card)] p-5">
+            <div
+              key={p.id}
+              id={p.id}
+              className="scroll-mt-24 rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-[var(--bg-card)] p-5"
+            >
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <h3 className="font-display text-lg text-[var(--accent-gold)]">{p.name}</h3>
                 <div className="flex flex-wrap items-center gap-3">
-                  {p.id === "deepseek" ? (
-                    <Link href="/guides/deepseek" className="text-sm text-[var(--accent-gold)] hover:underline">
+                  {p.guideUrl ? (
+                    <Link href={p.guideUrl} className="text-sm text-[var(--accent-gold)] hover:underline">
                       完整教程 →
                     </Link>
                   ) : null}
@@ -109,17 +113,15 @@ export default function DomesticModelsPage() {
                       <ExternalLink className="size-3" aria-hidden />
                     </a>
                   ) : null}
-                  {p.id !== "deepseek" ? (
-                    <a
-                      href={p.signupUrl}
-                      className="inline-flex items-center gap-1 text-sm text-[var(--accent-gold)] hover:underline"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      去注册
-                      <ExternalLink className="size-3" aria-hidden />
-                    </a>
-                  ) : null}
+                  <a
+                    href={p.signupUrl}
+                    className="inline-flex items-center gap-1 text-sm text-[var(--accent-gold)] hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    去注册
+                    <ExternalLink className="size-3" aria-hidden />
+                  </a>
                 </div>
               </div>
               <p className="mt-2 text-sm text-[var(--text-secondary)]">{p.note}</p>
@@ -172,11 +174,6 @@ export default function DomesticModelsPage() {
       <section className="mt-10">
         <h2 className="font-display text-lg font-medium">下一步</h2>
         <ul className="mt-4 space-y-2 text-sm">
-          <li>
-            <Link href="/guides/deepseek" className="text-[var(--accent-gold)] hover:underline">
-              DeepSeek 详细接入（含模型映射与排错）
-            </Link>
-          </li>
           <li>
             <Link href="/guides/cc-switch" className="text-[var(--accent-gold)] hover:underline">
               用 CC Switch 一键切换多套配置

@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Claude Code 中文学习指南",
   description:
-    "面向中文用户的 Claude Code 学习站：学习路径、学习路线、场景教程、实战工坊、资源与命令速查。",
+    "面向中文用户的 Claude Code 学习站：学习路径、学习路线、场景教程、实战工坊、延伸阅读、资源与命令速查。",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   github: "https://github.com/anthropics/claude-code",
   officialDocs: "https://docs.anthropic.com/en/docs/claude-code",
@@ -25,6 +25,7 @@ export const topNav = [
   { href: "/roadmap", label: "学习路线" },
   { href: "/scenarios", label: "场景教程" },
   { href: "/labs", label: "实战工坊" },
+  { href: "/reading", label: "延伸阅读" },
   { href: "/resources", label: "资源" },
   { href: "/cheatsheet", label: "命令速查" },
 ] as const;
@@ -61,6 +62,14 @@ export const homePaths = [
     count: "案例项目",
     duration: "持续更新",
     variant: "labs" as const,
+  },
+  {
+    href: "/reading",
+    title: "延伸阅读",
+    description: "精选官方工程博客与社区长文，理解 Agent、Skills 与工具设计原理。",
+    count: "精选文章",
+    duration: "按需阅读",
+    variant: "reading" as const,
   },
   {
     href: "/resources",

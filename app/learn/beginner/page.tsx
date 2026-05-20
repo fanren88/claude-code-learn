@@ -67,7 +67,10 @@ export default function BeginnerTrackPage() {
           </li>
           <li className="flex gap-2">
             <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-[var(--accent-success)]" aria-hidden />
-            已在用 DeepSeek → 直接看 <Link href="/guides/deepseek" className="text-[var(--accent-gold)] hover:underline">DeepSeek 接入</Link>
+            已在用 DeepSeek → 见{" "}
+            <Link href="/guides/domestic-models#deepseek" className="text-[var(--accent-gold)] hover:underline">
+              国产模型接入 · DeepSeek
+            </Link>
           </li>
           <li className="flex gap-2">
             <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-[var(--accent-success)]" aria-hidden />

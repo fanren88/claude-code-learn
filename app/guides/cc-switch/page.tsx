@@ -116,11 +116,11 @@ export default function CcSwitchPage() {
           <Link href="/guides/domestic-models" className="text-[var(--accent-gold)] hover:underline">
             国产模型接入总览
           </Link>
-          与{" "}
+          （含{" "}
           <Link href="/guides/deepseek" className="text-[var(--accent-gold)] hover:underline">
             DeepSeek 详细教程
           </Link>
-          。
+          ）。
         </p>
       </section>
 
