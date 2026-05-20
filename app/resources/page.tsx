@@ -48,9 +48,29 @@ const sections = [
     icon: BookOpen,
     links: [
       {
+        label: "零基础新手线",
+        href: "/learn/beginner",
+        sub: "概念 → 安装 → 国产模型 → 第一个小工具",
+      },
+      {
+        label: "国产模型接入总览",
+        href: "/guides/domestic-models",
+        sub: "选型、环境变量、Windows 注意与付费方式",
+      },
+      {
+        label: "CC Switch 图形化配置",
+        href: "/guides/cc-switch",
+        sub: "一键切换多套 API，适合不想手改变量的用户",
+      },
+      {
         label: "Claude Code 接入 DeepSeek（中文）",
         href: "/guides/deepseek",
         sub: "环境变量、持久化配置、模型映射与排错",
+      },
+      {
+        label: "第一个小工具（实战）",
+        href: "/labs/first-product",
+        sub: "30 分钟做出可在浏览器打开的待办页面",
       },
     ],
   },

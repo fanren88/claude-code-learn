@@ -28,7 +28,8 @@ export const roadmapPhases: RoadmapPhase[] = [
     outcome: "能独立启动会话、描述任务并审阅改动",
     icon: Rocket,
     chapters: [
-      { href: "/learn", title: "学习路径（5 步）", desc: "按推荐顺序走完安装到上下文配置" },
+      { href: "/learn/beginner", title: "零基础新手线", desc: "概念 → 安装 → 国产模型 → 第一个小工具" },
+      { href: "/learn", title: "学习路径（6 步）", desc: "按推荐顺序走完概念扫盲到 CLAUDE.md" },
       { href: "/learn/quickstart", title: "完成第一个任务", desc: "提问、审批、执行命令的完整闭环" },
     ],
   },
@@ -43,7 +44,8 @@ export const roadmapPhases: RoadmapPhase[] = [
     chapters: [
       { href: "/learn/how-it-works", title: "理解工作原理", desc: "Agent 循环、工具调用与权限确认" },
       { href: "/learn/context", title: "编写 CLAUDE.md", desc: "把项目背景写进持久上下文" },
-      { href: "/glossary", title: "术语表", desc: "快速对齐 Claude Code 核心概念" },
+      { href: "/learn/concepts", title: "概念扫盲", desc: "模型、Agent、Token、Skill 等入门概念" },
+      { href: "/glossary", title: "术语表", desc: "快速查阅 Claude Code 核心词汇" },
     ],
   },
   {
@@ -55,7 +57,9 @@ export const roadmapPhases: RoadmapPhase[] = [
     outcome: "能在真实项目中稳定推进需求与协作",
     icon: Flag,
     chapters: [
-      { href: "/scenarios", title: "场景教程", desc: "提示词、Git、权限等任务导向内容" },
+      { href: "/guides/domestic-models", title: "国产模型接入", desc: "国内 API 配置与选型" },
+      { href: "/scenarios", title: "场景教程", desc: "提示词、Git、权限、MCP 等任务导向内容" },
+      { href: "/labs/first-product", title: "第一个小工具", desc: "零基础可完成的浏览器小页面" },
       { href: "/labs", title: "实战工坊", desc: "动手实验与可复用的工作流模板" },
       { href: "/cheatsheet", title: "命令速查", desc: "高频 CLI 与斜杠命令一览" },
     ],

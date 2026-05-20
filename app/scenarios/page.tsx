@@ -1,6 +1,8 @@
 import Link from "next/link";
 
 const scenarios = [
+  { href: "/guides/domestic-models", title: "国产模型接入", desc: "DeepSeek、GLM、Kimi 等选型与环境变量总览，国内用户入门必读。" },
+  { href: "/guides/cc-switch", title: "CC Switch 配置", desc: "图形化管理多套 API，一键切换官方与国产模型。" },
   { href: "/guides/deepseek", title: "接入 DeepSeek", desc: "用 Anthropic 兼容接口在 Claude Code 里调用 DeepSeek 模型。" },
   { href: "/guides/prompting", title: "提示词拆解", desc: "把任务目标、边界和验收标准讲清楚。" },
   { href: "/guides/git-workflows", title: "Git 协作", desc: "围绕 diff、提交和审查形成稳定流程。" },

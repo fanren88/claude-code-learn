@@ -25,6 +25,14 @@ const commands = [
     ],
   },
   {
+    group: "进阶",
+    items: [
+      { cmd: "claude --dangerously-skip-permissions", desc: "跳过权限确认（高风险，新手勿用）" },
+      { cmd: "终端 Ctrl+V / Cmd+V", desc: "粘贴截图给 Claude 看 UI 或报错" },
+      { cmd: "VS Code 扩展", desc: "在扩展市场搜索 Claude Code 获得图形界面" },
+    ],
+  },
+  {
     group: "排错三连",
     items: [
       { cmd: "npm run build", desc: "先确认项目是否能构建" },

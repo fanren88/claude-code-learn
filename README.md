@@ -2,7 +2,8 @@
 
 面向初学者的 [Claude Code](https://docs.anthropic.com/en/docs/claude-code) 中文学习站，采用 Next.js App Router 结构，首页与导航对齐参考项目的六大栏目：
 
-- 学习路径
+- 学习路径（含概念扫盲 6 步）
+- 零基础新手线（国产模型 + 第一个小工具）
 - 学习路线
 - 场景教程
 - 实战工坊

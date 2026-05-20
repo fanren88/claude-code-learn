@@ -19,7 +19,9 @@ export function LearnTimeline() {
                 <Icon className="size-6 text-[var(--accent-gold)]" aria-hidden />
               </span>
               {!isLast ? (
-                <span className="mt-1 font-mono text-[10px] text-[var(--text-muted)]">{index + 1}/5</span>
+                <span className="mt-1 font-mono text-[10px] text-[var(--text-muted)]">
+                  {index + 1}/{learnSteps.length}
+                </span>
               ) : null}
             </div>
 

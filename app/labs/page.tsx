@@ -2,6 +2,12 @@ import Link from "next/link";
 
 const labs = [
   {
+    href: "/labs/first-product",
+    title: "第一个小工具",
+    desc: "在空文件夹里用 Claude Code 做出可在浏览器打开的待办页面，约 30 分钟。",
+    outcome: "可运行的 index.html + 验收清单",
+  },
+  {
     href: "/guides/prompting",
     title: "需求拆解实战",
     desc: "把一个模糊需求拆成可执行子任务，并形成可审查输出。",

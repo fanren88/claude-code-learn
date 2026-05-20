@@ -34,8 +34,8 @@ export const homePaths = [
     href: "/learn",
     title: "学习路径",
     description: "安装、登录、第一次对话、审批改动，先跑通 Claude Code 基础闭环。",
-    count: "5 篇教程",
-    duration: "约 1 小时",
+    count: "6 篇教程",
+    duration: "约 1.5 小时",
     variant: "learn" as const,
   },
   {

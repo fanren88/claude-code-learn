@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import { Download, KeyRound, Rocket, Brain, FileText } from "lucide-react";
+import { BookOpen, Download, KeyRound, Rocket, Brain, FileText } from "lucide-react";
 
 export type LearnStep = {
   slug: string;
@@ -13,35 +13,56 @@ export type LearnStep = {
 
 export const learnSteps: LearnStep[] = [
   {
-    slug: "install",
-    title: "安装 Claude Code",
-    desc: "完成安装并检查环境是否可运行。",
-    duration: "约 10 分钟",
-    icon: Download,
+    slug: "concepts",
+    title: "5 分钟概念扫盲",
+    desc: "搞懂模型、Agent、Token 和 Skill，后面学起来不会懵。",
+    duration: "约 5 分钟",
+    icon: BookOpen,
     summary: [
-      "优先按官方 Setup 文档选择当前推荐的安装方式，并确认系统与终端环境受支持。",
-      "安装完成后运行 `claude --version`，确认 CLI 可用。",
-      "Git 是多数代码项目的基础依赖；Node.js 版本要求应按你的项目技术栈单独确认。",
+      "模型 = 大脑（会思考）；Chatbot = 大脑 + 嘴（能聊不能做）；Agent = 大脑 + 手脚（Claude Code 就是这种）。",
+      "Token 是 AI 的「字数单位」，学习阶段先把任务跑通，不必过度纠结省 Token。",
+      "一个会话专注一件事；话题换了就用 /clear 或新开终端，避免上下文污染。",
+      "Skill 像麦当劳的 SOP：把步骤、工具、验收标准写清楚，Claude 就能按流程反复执行。",
+      "Harness（上下文工程）= 怎么喂信息、怎么设权限、怎么验收结果；Claude Code 把这套方法做成了产品。",
     ],
     tips: [
-      "若命令找不到，先检查官方安装页列出的 PATH 与 shell 配置步骤。",
-      "企业网络可提前配置代理或让管理员确认允许访问 Anthropic 相关域名。",
+      "看不懂直播或教程，往往是名词没串起来——本章看完再往下走会轻松很多。",
+      "更完整的术语解释见站内「术语表」。",
+    ],
+  },
+  {
+    slug: "install",
+    title: "安装 Claude Code",
+    desc: "完成安装并检查环境是否可运行（含 Windows 与原生安装方式）。",
+    duration: "约 15 分钟",
+    icon: Download,
+    summary: [
+      "方式 A（通用）：npm install -g @anthropic-ai/claude-code，不要用 sudo npm install -g。",
+      "方式 B（官方推荐）：macOS/Linux 用 curl -fsSL https://claude.ai/install.sh | bash；Windows 用 PowerShell 执行官方 install.ps1。",
+      "Windows 用户还需安装 Git（https://git-scm.com），否则很多项目命令无法运行。",
+      "安装后运行 claude --version 确认 CLI 可用；Node.js 建议 18+（npm 安装方式需要）。",
+      "从旧版 npm 迁到原生安装后，可执行 npm uninstall -g @anthropic-ai/claude-code 清理旧包。",
+    ],
+    tips: [
+      "若命令找不到，检查 PATH；关闭所有终端窗口后重新打开再试。",
+      "企业网络提前确认能否访问 Anthropic 或你选用的国产 API 域名。",
     ],
   },
   {
     slug: "authentication",
-    title: "登录账号",
-    desc: "使用 Claude Pro / Console / 企业账号完成授权。",
-    duration: "约 5 分钟",
+    title: "登录与配置模型",
+    desc: "官方账号登录，或通过国产 API / CC Switch 配置后端模型。",
+    duration: "约 10 分钟",
     icon: KeyRound,
     summary: [
-      "在项目目录运行 `claude`，按提示在浏览器完成 OAuth 登录。",
-      "团队场景可能使用 Console、企业账号或 SSO，具体取决于组织开通方式。",
-      "登录成功后，可用 `/status` 或官方推荐命令核对账号、模型与工作目录状态。",
+      "官方路径：在项目目录运行 claude，按提示在浏览器完成 OAuth 登录。",
+      "国产 API 路径：设置 ANTHROPIC_BASE_URL、ANTHROPIC_AUTH_TOKEN、ANTHROPIC_MODEL 后再启动 claude。",
+      "推荐把环境变量写入 ~/.claude/settings.json 的 env 字段，避免每次开终端都要 export。",
+      "用 /status 查看当前账号、模型与工作目录是否正常。",
     ],
     tips: [
-      "多账号切换、登出与重新授权命令可能随版本变化，优先查看 `/help`。",
-      "勿将 API Key 提交到 Git 仓库，使用环境变量或密钥管理工具。",
+      "API Key 不要写进 CLAUDE.md 或提交到 Git；用 settings.local.json 或系统环境变量。",
+      "国内用户可先看「国产模型接入」与「CC Switch 配置」两篇场景教程。",
     ],
   },
   {
@@ -73,7 +94,7 @@ export const learnSteps: LearnStep[] = [
     ],
     tips: [
       "遇到反复失败时，可要求缩小范围或分步骤执行。",
-      "善用 `/help` 与官方文档核对命令是否随版本更新。",
+      "善用 /help 与官方文档核对命令是否随版本更新。",
     ],
   },
   {
@@ -83,7 +104,7 @@ export const learnSteps: LearnStep[] = [
     duration: "约 15 分钟",
     icon: FileText,
     summary: [
-      "在项目根目录创建 `CLAUDE.md`，写明技术栈、目录约定与开发命令。",
+      "在项目根目录创建 CLAUDE.md，写明技术栈、目录约定与开发命令。",
       "补充测试方式、代码风格与禁止事项（如不要改哪些目录）。",
       "团队可提交到 Git，让所有成员共享同一套项目记忆。",
     ],

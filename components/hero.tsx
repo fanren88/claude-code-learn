@@ -22,10 +22,10 @@ export function Hero() {
             从安装开始
           </Link>
           <Link
-            href="/roadmap"
+            href="/learn/beginner"
             className="inline-flex items-center rounded-[var(--radius-md)] border border-[var(--border-subtle)] px-5 py-2.5 text-sm font-medium text-[var(--text-primary)] transition hover:border-[rgba(74,222,128,0.4)]"
           >
-            查看学习路线
+            零基础新手线
           </Link>
         </div>
       </div>

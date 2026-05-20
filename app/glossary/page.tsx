@@ -1,24 +1,39 @@
-const terms = [
-  { term: "Agent 循环", meaning: "模型读取上下文、决定动作、执行工具并根据结果继续迭代的过程。" },
-  { term: "MCP", meaning: "Model Context Protocol，用于连接外部工具和数据源的协议。" },
-  { term: "CLAUDE.md", meaning: "项目级上下文文件，用于告诉 Claude 项目约定、目标和边界。" },
-  { term: "Slash command", meaning: "Claude Code 会话内以 `/` 开头的命令，用于查看状态、清空上下文、管理权限或触发内置流程。" },
-  { term: "Permission", meaning: "限制工具、命令和文件访问的安全边界。高风险操作应保持人工确认。" },
-  { term: "Context", meaning: "模型当前可见的信息，包括对话、文件内容、项目说明、工具结果和长期记忆。" },
-  { term: "Diff", meaning: "Git 展示的代码变更。接受 Agent 改动前，应优先审查 diff 和验证结果。" },
-];
+import { glossaryTerms } from "@/lib/glossary-terms";
+import { siteConfig } from "@/lib/site";
+
+const categories = ["基础", "Claude Code", "国产模型"] as const;
 
 export default function GlossaryPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
       <h1 className="font-display text-3xl font-semibold">术语表</h1>
-      <div className="mt-8 space-y-4">
-        {terms.map((item) => (
-          <section key={item.term} className="rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-[var(--bg-card)] p-5">
-            <h2 className="font-display text-xl text-[var(--accent-gold)]">{item.term}</h2>
-            <p className="mt-2 text-sm text-[var(--text-secondary)]">{item.meaning}</p>
-          </section>
-        ))}
+      <p className="mt-3 text-[var(--text-secondary)]">
+        快速对齐 Claude Code 与 AI 协作中的常用词。更系统的入门可看{" "}
+        <a href="/learn/concepts" className="text-[var(--accent-gold)] hover:underline">
+          概念扫盲
+        </a>
+        。
+      </p>
+      <p className="mt-2 text-sm text-[var(--text-muted)]">核对日期：{siteConfig.reviewedAt}</p>
+
+      <div className="mt-10 space-y-10">
+        {categories.map((cat) => {
+          const items = glossaryTerms.filter((t) => t.category === cat);
+          if (items.length === 0) return null;
+          return (
+            <section key={cat}>
+              <h2 className="mb-4 font-display text-lg text-[var(--accent-gold)]">{cat}</h2>
+              <div className="space-y-4">
+                {items.map((item) => (
+                  <section key={item.term} className="rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-[var(--bg-card)] p-5">
+                    <h3 className="font-display text-xl text-[var(--text-primary)]">{item.term}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">{item.meaning}</p>
+                  </section>
+                ))}
+              </div>
+            </section>
+          );
+        })}
       </div>
     </div>
   );
